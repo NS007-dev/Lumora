@@ -1,0 +1,40 @@
+.home-page {
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    /* Ensures the content is centered */
+}
+
+.home-page h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #5c6bc0;
+    margin-top: 80px;
+    /* Adjust the top margin to make space for the button */
+}
+
+.home-page p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.navigate-button {
+    position: absolute;
+    /* Positions the button */
+    top: 20px;
+    /* Moves the button down a bit */
+    left: 20px;
+    /* Aligns the button to the left */
+    background-color: #5c6bc0;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.navigate-button:hover {
+    background-color: #4c5b8d;
+}

@@ -1,0 +1,47 @@
+/* src/theme.css */
+:root {
+    --primary-color: #1E90FF;
+    /* Blue */
+    --secondary-color: #4682B4;
+    /* Darker Blue for hover */
+    --background-color: #f0f8ff;
+    /* Light Blue Background */
+    --text-color: #333333;
+    /* Dark Text */
+    --accent-color: #00BFFF;
+    /* Light Blue Accent */
+    --font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: var(--font-family);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+button,
+.button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+    background-color: var(--secondary-color);
+}
+
+h1,
+h2 {
+    color: var(--text-color);
+}
+
+p {
+    color: var(--text-color);
+}
