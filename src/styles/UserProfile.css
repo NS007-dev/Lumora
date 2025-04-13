@@ -1,0 +1,139 @@
+/* General User Profile Styles */
+.user-profile-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+    /* Ensures the container takes full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Ensures space is available for the theme toggle */
+    overflow: auto;
+    /* Allow scroll when content is too long */
+}
+
+.profile-header h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+    border: 2px solid #ddd;
+}
+
+.profile-image-upload-label {
+    color: #007bff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.profile-image-upload-label:hover {
+    color: #0056b3;
+}
+
+.profile-details {
+    margin-bottom: 20px;
+}
+
+.profile-input-group {
+    margin-bottom: 15px;
+}
+
+.profile-input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-input-group input,
+.profile-input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.profile-input-group textarea {
+    min-height: 100px;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-btn,
+.delete-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.theme-toggle {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.theme-toggle button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.theme-toggle button:hover {
+    background-color: #0056b3;
+}
+
+/* Ensure the input fields are scrollable when content exceeds available space */
+.profile-input-group textarea {
+    max-height: 150px;
+    /* Limit height for textarea */
+    overflow-y: auto;
+    /* Allow scrolling if content exceeds the height */
+}
