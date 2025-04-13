@@ -1,0 +1,42 @@
+.screen-time-challenge {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.set-challenge,
+.log-time {
+    margin: 20px 0;
+}
+
+input[type="number"],
+input[type="text"] {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #32cd32;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #228b22;
+}
+
+.progress {
+    margin-top: 20px;
+    background-color: #f0f8ff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.screen-time-log ul {
+    list-style-type: none;
+    padding: 0;
+}

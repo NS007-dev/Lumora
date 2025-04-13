@@ -1,40 +1,51 @@
 .home-page {
     padding: 20px;
-    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
     text-align: center;
-    /* Ensures the content is centered */
 }
 
-.home-page h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #5c6bc0;
-    margin-top: 80px;
-    /* Adjust the top margin to make space for the button */
-}
-
-.home-page p {
-    font-size: 1.2rem;
+h1 {
+    font-size: 36px;
     margin-bottom: 20px;
 }
 
-.navigate-button {
-    position: absolute;
-    /* Positions the button */
-    top: 20px;
-    /* Moves the button down a bit */
-    left: 20px;
-    /* Aligns the button to the left */
-    background-color: #5c6bc0;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.button-container {
+    margin-top: 20px;
+    /* Space between text and buttons */
+}
+
+.mood-tracker-button,
+.screen-time-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px;
     cursor: pointer;
-    text-decoration: none;
-    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+    /* Space between the buttons */
+    border: none;
 }
 
-.navigate-button:hover {
-    background-color: #4c5b8d;
+.mood-tracker-button {
+    background-color: #ff6347;
+    color: white;
+}
+
+.mood-tracker-button:hover {
+    background-color: #e55347;
+}
+
+.screen-time-button {
+    background-color: #32cd32;
+    color: white;
+}
+
+.screen-time-button:hover {
+    background-color: #228b22;
 }

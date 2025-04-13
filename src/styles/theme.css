@@ -1,47 +1,198 @@
-/* src/theme.css */
-:root {
-    --primary-color: #1E90FF;
-    /* Blue */
-    --secondary-color: #4682B4;
-    /* Darker Blue for hover */
-    --background-color: #f0f8ff;
-    /* Light Blue Background */
-    --text-color: #333333;
-    /* Dark Text */
-    --accent-color: #00BFFF;
-    /* Light Blue Accent */
-    --font-family: 'Roboto', sans-serif;
-}
-
+/* General Reset & Fonts */
 body {
-    background-color: var(--background-color);
-    font-family: var(--font-family);
-    color: var(--text-color);
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f4f8;
+    color: #333;
+    transition: background 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
 }
 
-button,
-.button {
-    background-color: var(--primary-color);
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(to right, #4a6bdc, #8256ff);
     color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    margin: 0 0.75rem;
+    font-weight: 500;
+}
+
+.navbar button {
+    background: none;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
     cursor: pointer;
 }
 
-button:hover,
-.button:hover {
-    background-color: var(--secondary-color);
+/* Home Page */
+.home-page {
+    padding: 2rem;
 }
 
-h1,
-h2 {
-    color: var(--text-color);
+/* Mood Tracker */
+.mood-tracker-container {
+    padding: 2rem;
+    max-width: 700px;
+    margin: auto;
 }
 
-p {
-    color: var(--text-color);
+.mood-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.mood-button {
+    padding: 0.75rem 1.2rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.mood-button:hover {
+    transform: scale(1.05);
+}
+
+.streak-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.streak-box {
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Journal */
+.journal-container {
+    max-width: 700px;
+    margin: auto;
+    padding: 2rem;
+}
+
+.journal-entry {
+    margin-top: 1rem;
+}
+
+/* Affirmation */
+.affirmation-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Positive Content Feed */
+.content-feed-container {
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+}
+
+.content-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Floating Gradient Blobs */
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.7;
+    animation: pulse 10s infinite alternate ease-in-out;
+}
+
+.blob1 {
+    background: #4a6bdc;
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+}
+
+.blob2 {
+    background: #e44ed0;
+    width: 300px;
+    height: 300px;
+    top: 150px;
+    right: -100px;
+}
+
+.blob3 {
+    background: #56c4fc;
+    width: 350px;
+    height: 350px;
+    bottom: -100px;
+    left: 30%;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+
+    100% {
+        transform: scale(1.2) translateY(-20px);
+    }
+}
+
+/* Dark Mode */
+body.dark {
+    background: #1e1e2f;
+    color: #f9f9f9;
+}
+
+.dark .navbar {
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+}
+
+.dark .content-card,
+.dark .mood-button,
+.dark .journal-container,
+.dark .affirmation-container,
+.dark .content-feed-container {
+    background-color: #2e2e3d;
+    color: #ffffff;
+}
+
+.dark .mood-button:hover {
+    background-color: #444;
+}
+
+.dark .streak-box {
+    border: 1px solid #555;
+}
+
+.dark .navbar button {
+    color: #f9f9f9;
 }

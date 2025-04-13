@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./Homepage.css"; // Add CSS for the homepage
+import { Link } from "react-router-dom"; // Import Link for navigation
+import "./Homepage.css"; // Component-specific styling
 
 const HomePage = () => {
   return (
@@ -9,9 +9,19 @@ const HomePage = () => {
       <p>
         Your journey to building confidence and mental wellness starts here.
       </p>
-      <Link to="/moodtracker">
-        <button className="navigate-button">Go to Mood Tracker</button>
-      </Link>
+      <div className="button-container">
+        {/* Link to Mood Tracker */}
+        <Link to="/moodtracker">
+          <button className="mood-tracker-button">Go to Mood Tracker</button>
+        </Link>
+
+        {/* Link to Screen Time Challenge */}
+        <Link to="/screen-time">
+          <button className="screen-time-button">
+            Start Screen Time Challenge
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
