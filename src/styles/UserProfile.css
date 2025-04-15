@@ -1,139 +1,138 @@
-/* General User Profile Styles */
-.user-profile-container {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-height: 100vh;
-    /* Ensures the container takes full height */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* Ensures space is available for the theme toggle */
-    overflow: auto;
-    /* Allow scroll when content is too long */
+/* Ensure full height and scroll works */
+body,
+html,
+.App {
+    height: 100%;
+    overflow-y: auto;
 }
 
-.profile-header h2 {
+/* Profile Container */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--background-color, white);
+    color: var(--text-color, #333);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.profile-container h1 {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 }
 
-.profile-image-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
+/* Profile Image */
 .profile-image {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 10px;
-    border: 2px solid #ddd;
+    object-fit: cover;
+    margin: 1rem auto;
+    display: block;
+    border: 3px solid #ccc;
 }
 
-.profile-image-upload-label {
+/* Upload Button Label */
+.upload-label {
+    display: block;
+    text-align: center;
+    margin-bottom: 1.5rem;
     color: #007bff;
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: underline;
 }
 
-.profile-image-upload-label:hover {
-    color: #0056b3;
+/* Hidden file input */
+input[type="file"] {
+    display: none;
 }
 
-.profile-details {
-    margin-bottom: 20px;
+/* Form Styling */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
-.profile-input-group {
-    margin-bottom: 15px;
+/* Form Groups */
+.profile-form div {
+    display: flex;
+    flex-direction: column;
 }
 
-.profile-input-group label {
-    display: block;
+/* Labels */
+.profile-form label {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 0.4rem;
 }
 
-.profile-input-group input,
-.profile-input-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+/* Inputs & Textarea */
+.profile-form input,
+.profile-form textarea {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
     font-size: 1rem;
 }
 
-.profile-input-group textarea {
-    min-height: 100px;
+/* Textarea resize */
+.profile-form textarea {
+    resize: vertical;
 }
 
-.profile-actions {
-    display: flex;
-    justify-content: space-between;
-}
-
-.save-btn,
-.delete-btn {
-    padding: 10px 20px;
+/* Buttons */
+.profile-form button {
+    padding: 0.75rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #6a9bf6, #b679f8);
+    color: white;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.save-btn {
-    background-color: #28a745;
-    color: white;
+.profile-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(106, 155, 246, 0.3);
 }
 
-.save-btn:hover {
-    background-color: #218838;
-}
-
-.delete-btn {
-    background-color: #dc3545;
-    color: white;
-}
-
-.delete-btn:hover {
-    background-color: #c82333;
-}
-
-.theme-toggle {
+/* Theme Toggle Button Alignment */
+.theme-toggle-wrapper {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
 }
 
-.theme-toggle button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+/* Success Message */
+.success-message {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1rem;
 }
 
-.theme-toggle button:hover {
-    background-color: #0056b3;
+/* Dark Mode (if using class-based theme toggle) */
+body.dark .profile-container {
+    background: #1e1e2f;
+    color: #f0f0f0;
 }
 
-/* Ensure the input fields are scrollable when content exceeds available space */
-.profile-input-group textarea {
-    max-height: 150px;
-    /* Limit height for textarea */
-    overflow-y: auto;
-    /* Allow scrolling if content exceeds the height */
+body.dark .profile-form input,
+body.dark .profile-form textarea {
+    background: #2c2c3a;
+    color: #f0f0f0;
+    border: 1px solid #555;
+}
+
+body.dark .profile-form button {
+    background: linear-gradient(90deg, #4e66f2, #a460f2);
+}
+
+body.dark .upload-label {
+    color: #6faaff;
 }

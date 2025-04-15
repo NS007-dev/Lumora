@@ -2,120 +2,90 @@ import React, { useState, useEffect } from "react";
 import "../styles/UserProfile.css";
 
 const UserProfile = () => {
-  const [profileImage, setProfileImage] = useState(null);
-  const [bio, setBio] = useState("");
-  const [username, setUsername] = useState("");
-  const [theme, setTheme] = useState("light");
+  const [profileImage, setProfileImage] = useState(
+    localStorage.getItem("profileImage") || null
+  );
+  const [username, setUsername] = useState(
+    localStorage.getItem("username") || "Noorin"
+  );
+  const [bio, setBio] = useState(localStorage.getItem("bio") || "Hi");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
-    // Load user profile data from localStorage
-    const savedProfileImage = localStorage.getItem("profileImage");
-    const savedBio = localStorage.getItem("bio");
-    const savedUsername = localStorage.getItem("username");
-    const savedTheme = localStorage.getItem("theme");
+    document.body.className = theme;
+  }, [theme]);
 
-    if (savedProfileImage) setProfileImage(savedProfileImage);
-    if (savedBio) setBio(savedBio);
-    if (savedUsername) setUsername(savedUsername);
-    if (savedTheme) setTheme(savedTheme);
-  }, []);
-
-  const handleProfileImageChange = (e) => {
+  const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setProfileImage(reader.result);
         localStorage.setItem("profileImage", reader.result);
+        setSuccessMessage("Profile picture updated!");
+        setTimeout(() => setSuccessMessage(""), 3000);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const handleBioChange = (e) => setBio(e.target.value);
-  const handleUsernameChange = (e) => setUsername(e.target.value);
-
-  const handleSave = () => {
-    localStorage.setItem("bio", bio);
+  const handleSubmit = (e) => {
+    e.preventDefault();
     localStorage.setItem("username", username);
-    alert("Profile saved successfully!");
+    localStorage.setItem("bio", bio);
+    setSuccessMessage("Profile updated!");
+    setTimeout(() => setSuccessMessage(""), 3000);
   };
 
-  const handleThemeToggle = () => {
+  const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
-    document.body.classList.toggle("dark-theme", newTheme === "dark");
-  };
-
-  const handleDeleteProfile = () => {
-    setProfileImage(null);
-    setBio("");
-    setUsername("");
-    localStorage.removeItem("profileImage");
-    localStorage.removeItem("bio");
-    localStorage.removeItem("username");
-    alert("Profile deleted!");
   };
 
   return (
-    <div className="user-profile-container">
-      <div className="profile-header">
-        <h2>User Profile</h2>
+    <div className="profile-container">
+      <div className="theme-toggle-wrapper">
+        <button onClick={toggleTheme}>
+          Switch to {theme === "light" ? "Dark" : "Light"} Mode
+        </button>
       </div>
-      <div className="profile-image-container">
-        <div
-          className="profile-image"
-          style={{
-            backgroundImage: `url(${profileImage || "/default-avatar.png"})`,
-          }}
-        ></div>
-        <label
-          htmlFor="profile-image-upload"
-          className="profile-image-upload-label"
-        >
-          Change Profile Picture
-        </label>
-        <input
-          id="profile-image-upload"
-          type="file"
-          accept="image/*"
-          onChange={handleProfileImageChange}
-          style={{ display: "none" }}
-        />
-      </div>
-      <div className="profile-details">
-        <div className="profile-input-group">
+      <h1>User Profile</h1>
+      {profileImage ? (
+        <img src={profileImage} alt="Profile" className="profile-image" />
+      ) : (
+        <div className="profile-image" style={{ backgroundColor: "#eee" }} />
+      )}
+      <label htmlFor="imageUpload" className="upload-label">
+        Change Profile Picture
+      </label>
+      <input
+        id="imageUpload"
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+      />
+      <form className="profile-form" onSubmit={handleSubmit}>
+        <div>
           <label>Username</label>
           <input
             type="text"
             value={username}
-            onChange={handleUsernameChange}
-            placeholder="Enter your username"
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="profile-input-group">
+        <div>
           <label>Bio</label>
           <textarea
+            rows="3"
             value={bio}
-            onChange={handleBioChange}
-            placeholder="Write something about yourself"
-          ></textarea>
+            onChange={(e) => setBio(e.target.value)}
+          />
         </div>
-        <div className="profile-actions">
-          <button className="save-btn" onClick={handleSave}>
-            Save Changes
-          </button>
-          <button className="delete-btn" onClick={handleDeleteProfile}>
-            Delete Profile
-          </button>
-        </div>
-      </div>
-      <div className="theme-toggle">
-        <button onClick={handleThemeToggle}>
-          Switch to {theme === "light" ? "Dark" : "Light"} Mode
-        </button>
-      </div>
+        <button type="submit">Save Changes</button>
+      </form>
+      {successMessage && <p className="success-message">{successMessage}</p>}
     </div>
   );
 };
