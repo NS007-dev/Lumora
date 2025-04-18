@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/UserProfile.css";
+import Layout from "../components/Layout";
 
 const UserProfile = () => {
   const [profileImage, setProfileImage] = useState(
@@ -45,48 +46,50 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="profile-container">
-      <div className="theme-toggle-wrapper">
-        <button onClick={toggleTheme}>
-          Switch to {theme === "light" ? "Dark" : "Light"} Mode
-        </button>
+    <Layout>
+      <div className="profile-container">
+        <div className="theme-toggle-wrapper">
+          <button onClick={toggleTheme}>
+            Switch to {theme === "light" ? "Dark" : "Light"} Mode
+          </button>
+        </div>
+        <h1>User Profile</h1>
+        {profileImage ? (
+          <img src={profileImage} alt="Profile" className="profile-image" />
+        ) : (
+          <div className="profile-image" style={{ backgroundColor: "#eee" }} />
+        )}
+        <label htmlFor="imageUpload" className="upload-label">
+          Change Profile Picture
+        </label>
+        <input
+          id="imageUpload"
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+        <form className="profile-form" onSubmit={handleSubmit}>
+          <div>
+            <label>Username</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div>
+            <label>Bio</label>
+            <textarea
+              rows="3"
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+            />
+          </div>
+          <button type="submit">Save Changes</button>
+        </form>
+        {successMessage && <p className="success-message">{successMessage}</p>}
       </div>
-      <h1>User Profile</h1>
-      {profileImage ? (
-        <img src={profileImage} alt="Profile" className="profile-image" />
-      ) : (
-        <div className="profile-image" style={{ backgroundColor: "#eee" }} />
-      )}
-      <label htmlFor="imageUpload" className="upload-label">
-        Change Profile Picture
-      </label>
-      <input
-        id="imageUpload"
-        type="file"
-        accept="image/*"
-        onChange={handleImageChange}
-      />
-      <form className="profile-form" onSubmit={handleSubmit}>
-        <div>
-          <label>Username</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Bio</label>
-          <textarea
-            rows="3"
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-          />
-        </div>
-        <button type="submit">Save Changes</button>
-      </form>
-      {successMessage && <p className="success-message">{successMessage}</p>}
-    </div>
+    </Layout>
   );
 };
 

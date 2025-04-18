@@ -1,49 +1,41 @@
 import React from "react";
-import "./PositiveContentFeed.css"; // Importing the CSS file for styling
+import "./PositiveContentFeed.css";
+import Layout from "./Layout";
 
 const contentFeed = [
   {
-    title: "Empowering Women in Tech",
-    description:
-      "An article about the impact of women in the tech industry and how to get involved.",
-    link: "https://www.example.com/article1",
+    title: "How to Build Confidence",
+    source: "YouTube - Psych2Go",
+    link: "https://www.youtube.com/watch?v=somevideo",
   },
   {
-    title: "Mental Health Awareness",
-    description:
-      "A video by mental health experts about managing stress and anxiety.",
-    link: "https://www.example.com/video1",
+    title: "10 Affirmations to Start Your Day",
+    source: "Medium",
+    link: "https://medium.com/@example/affirmations",
   },
   {
-    title: "Leadership Tips for Women",
-    description:
-      "An inspiring talk by a female CEO on leadership and personal growth.",
-    link: "https://www.example.com/talk1",
-  },
-  {
-    title: "Self-Care Practices",
-    description:
-      "An article about self-care techniques to maintain mental wellness.",
-    link: "https://www.example.com/article2",
+    title: "TED Talk: Power of Vulnerability",
+    source: "TED",
+    link: "https://www.ted.com/talks/brene_brown_the_power_of_vulnerability",
   },
 ];
 
 const PositiveContentFeed = () => {
   return (
-    <div className="content-feed-container">
-      <h2>Positive Content Feed</h2>
-      <div className="content-items">
-        {contentFeed.map((content, index) => (
-          <div className="content-item" key={index}>
-            <h3>{content.title}</h3>
-            <p>{content.description}</p>
-            <a href={content.link} target="_blank" rel="noopener noreferrer">
-              Read More
-            </a>
-          </div>
-        ))}
+    <Layout>
+      <div className="positive-content-feed">
+        <h2>Positive Content Feed</h2>
+        <ul>
+          {contentFeed.map((item, index) => (
+            <li key={index}>
+              <a href={item.link} target="_blank" rel="noopener noreferrer">
+                <strong>{item.title}</strong> - {item.source}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
+    </Layout>
   );
 };
 
