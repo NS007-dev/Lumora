@@ -1,51 +1,65 @@
-.home-page {
-    padding: 20px;
+/* homepage.css */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.homepage-container {
+    background: radial-gradient(circle at 20% 30%, rgba(173, 216, 230, 0.6), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 192, 203, 0.5), transparent 40%),
+        #f3f3f3;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.hero {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: #3c3c8c;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #444;
     max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
 }
 
-h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+.features-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
-p {
-    font-size: 18px;
-    margin-bottom: 40px;
+.feature-card {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
 }
 
-.button-container {
-    margin-top: 20px;
-    /* Space between text and buttons */
+.feature-card:hover {
+    transform: translateY(-5px);
 }
 
-.mood-tracker-button,
-.screen-time-button {
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 10px;
-    /* Space between the buttons */
-    border: none;
+.feature-card h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color: #2c2c6c;
 }
 
-.mood-tracker-button {
-    background-color: #ff6347;
-    color: white;
-}
-
-.mood-tracker-button:hover {
-    background-color: #e55347;
-}
-
-.screen-time-button {
-    background-color: #32cd32;
-    color: white;
-}
-
-.screen-time-button:hover {
-    background-color: #228b22;
+.feature-card p {
+    font-size: 1rem;
+    color: #333;
 }

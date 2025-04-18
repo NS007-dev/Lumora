@@ -3,10 +3,15 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f4f8;
-    color: #333;
-    transition: background 0.4s ease, color 0.4s ease;
     overflow-x: hidden;
+    background-color: #f0f4ff;
+    color: #222;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+    background-color: #0c0c0c;
+    color: #f0f0f0;
 }
 
 a {

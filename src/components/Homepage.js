@@ -1,29 +1,49 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
-import "./Homepage.css"; // Component-specific styling
+import "./Homepage.css";
+import { Link } from "react-router-dom";
 
-const HomePage = () => {
+const features = [
+  {
+    title: "Daily Affirmations",
+    description: "Boost confidence with personalized uplifting messages.",
+  },
+  {
+    title: "Reflection Journal",
+    description: "Track emotions, thoughts and personal growth privately.",
+  },
+  {
+    title: "Mood Tracker",
+    description: "Understand your emotions with visual patterns and notes.",
+  },
+  {
+    title: "Screen Time Challenge",
+    description: "Track phone usage and reduce time on toxic apps.",
+  },
+  {
+    title: "Positive Content Feed",
+    description: "See empowering stories, creators and mental health voices.",
+  },
+];
+
+export default function Homepage() {
   return (
-    <div className="home-page">
-      <h1>Welcome to the Affirmation App</h1>
-      <p>
-        Your journey to building confidence and mental wellness starts here.
-      </p>
-      <div className="button-container">
-        {/* Link to Mood Tracker */}
-        <Link to="/moodtracker">
-          <button className="mood-tracker-button">Go to Mood Tracker</button>
-        </Link>
+    <div className="homepage-container">
+      <header className="hero">
+        <h1>Welcome to Lumora</h1>
+        <p>
+          Empowering girls to build confidence, self-worth, and mental
+          wellbeing.
+        </p>
+      </header>
 
-        {/* Link to Screen Time Challenge */}
-        <Link to="/screen-time">
-          <button className="screen-time-button">
-            Start Screen Time Challenge
-          </button>
-        </Link>
-      </div>
+      <section className="features-section">
+        {features.map((feature, index) => (
+          <div key={index} className="feature-card">
+            <h2>{feature.title}</h2>
+            <p>{feature.description}</p>
+          </div>
+        ))}
+      </section>
     </div>
   );
-};
-
-export default HomePage;
+}
