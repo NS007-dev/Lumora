@@ -1,87 +1,79 @@
-import { Layout } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import "./ScreenTimeChallenge.css";
-import Layout from "../components/Layout";
+import Layout from "./Layout"; // ✅ Only import ONCE, use correct path
 
 const ScreenTimeChallenge = () => {
   const [screenTimeLogs, setScreenTimeLogs] = useState([]);
-  const [challengeTime, setChallengeTime] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [app, setApp] = useState("");
-  const [timeSpent, setTimeSpent] = useState("");
+  const [inputTime, setInputTime] = useState("");
+  const [goalTime, setGoalTime] = useState("");
 
   useEffect(() => {
-    // Retrieve previous screen time logs from localStorage
-    const savedLogs = JSON.parse(localStorage.getItem("screenTimeLogs")) || [];
-    setScreenTimeLogs(savedLogs);
+    const storedLogs = localStorage.getItem("screenTimeLogs");
+    if (storedLogs) {
+      setScreenTimeLogs(JSON.parse(storedLogs));
+    }
   }, []);
 
-  const handleLogTime = () => {
-    const newLog = { app, timeSpent: parseFloat(timeSpent) };
-    const updatedLogs = [...screenTimeLogs, newLog];
-    setScreenTimeLogs(updatedLogs);
-    localStorage.setItem("screenTimeLogs", JSON.stringify(updatedLogs));
-    setApp("");
-    setTimeSpent("");
+  useEffect(() => {
+    localStorage.setItem("screenTimeLogs", JSON.stringify(screenTimeLogs));
+  }, [screenTimeLogs]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!inputTime || !goalTime) return;
+
+    const newLog = {
+      id: Date.now(),
+      date: new Date().toLocaleDateString(),
+      timeSpent: parseFloat(inputTime),
+      goal: parseFloat(goalTime),
+    };
+
+    setScreenTimeLogs([newLog, ...screenTimeLogs]);
+    setInputTime("");
+    setGoalTime("");
   };
 
-  const handleSetChallenge = () => {
-    setChallengeTime(parseFloat(currentTime));
-  };
-
-  const getChallengeProgress = () => {
-    const totalTimeSpent = screenTimeLogs.reduce(
-      (total, log) => total + log.timeSpent,
-      0
-    );
-    return Math.min(totalTimeSpent, challengeTime);
-  };
+  const successCount = screenTimeLogs.filter(
+    (log) => log.timeSpent <= log.goal
+  ).length;
 
   return (
     <Layout>
-      <div className="screen-time-challenge">
-        <h2>Screen Time Challenge</h2>
-        <div className="set-challenge">
-          <label>Set Your Daily Challenge (in hours):</label>
+      <div className="screen-time-container">
+        <h1>📵 Screen Time Challenge</h1>
+        <form onSubmit={handleSubmit} className="screen-time-form">
           <input
             type="number"
-            value={currentTime}
-            onChange={(e) => setCurrentTime(e.target.value)}
-            placeholder="e.g., 2 hours"
-          />
-          <button onClick={handleSetChallenge}>Set Challenge</button>
-        </div>
-        <div className="log-time">
-          <label>Log Time for an App:</label>
-          <input
-            type="text"
-            value={app}
-            onChange={(e) => setApp(e.target.value)}
-            placeholder="App name"
+            placeholder="Hours spent on screen today"
+            value={inputTime}
+            onChange={(e) => setInputTime(e.target.value)}
+            min="0"
+            step="0.1"
           />
           <input
             type="number"
-            value={timeSpent}
-            onChange={(e) => setTimeSpent(e.target.value)}
-            placeholder="Time spent (in hours)"
+            placeholder="Daily screen time goal (hours)"
+            value={goalTime}
+            onChange={(e) => setGoalTime(e.target.value)}
+            min="0"
+            step="0.1"
           />
-          <button onClick={handleLogTime}>Log Time</button>
-        </div>
-        <div className="progress">
-          <h3>Challenge Progress</h3>
-          <p>Challenge: {challengeTime} hours</p>
-          <p>Time Logged: {getChallengeProgress()} hours</p>
-          <p>
-            Remaining: {Math.max(0, challengeTime - getChallengeProgress())}{" "}
-            hours
-          </p>
-        </div>
-        <div className="screen-time-log">
-          <h3>Logged Screen Time</h3>
-          <ul>
-            {screenTimeLogs.map((log, index) => (
-              <li key={index}>
-                {log.app}: {log.timeSpent} hours
+          <button type="submit">Add Entry</button>
+        </form>
+
+        <div className="log-summary">
+          <h3>
+            ✅ Goal Achieved: {successCount} day{successCount !== 1 ? "s" : ""}
+          </h3>
+          <ul className="log-list">
+            {screenTimeLogs.map((log) => (
+              <li
+                key={log.id}
+                className={log.timeSpent <= log.goal ? "success" : "fail"}
+              >
+                <strong>{log.date}</strong> — You spent {log.timeSpent}h (Goal:{" "}
+                {log.goal}h)
               </li>
             ))}
           </ul>

@@ -24,16 +24,17 @@ const PositiveContentFeed = () => {
   return (
     <Layout>
       <div className="positive-content-feed">
-        <h2>Positive Content Feed</h2>
-        <ul>
+        <h2 className="feed-title">Positive Content Feed</h2>
+        <div className="content-grid">
           {contentFeed.map((item, index) => (
-            <li key={index}>
+            <div className="content-card" key={index}>
               <a href={item.link} target="_blank" rel="noopener noreferrer">
-                <strong>{item.title}</strong> - {item.source}
+                <h3>{item.title}</h3>
               </a>
-            </li>
+              <p>{item.source}</p>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </Layout>
   );
