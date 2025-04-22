@@ -1,13 +1,11 @@
 import React from "react";
 import NavBar from "./NavBar";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isDarkMode, toggleDarkMode }) => {
   return (
     <div>
-      <NavBar />
-      <main style={{ paddingTop: "80px" }}>
-        {children}
-      </main>
+      <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <main>{children}</main>
     </div>
   );
 };
