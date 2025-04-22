@@ -58,8 +58,13 @@
 }
 
 .positive-content-feed {
-    padding: 2rem;
     background-color: #f9fafb;
+    padding: 20px;
+    margin-top: 80px;
+    /* <-- adjust based on navbar height */
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .feed-title {
@@ -97,4 +102,68 @@
 .content-card p {
     font-size: 0.9rem;
     color: #666;
+}
+
+.content-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.positive-content-feed {
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.feed-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feed-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.source {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+.reactions {
+    margin-top: 10px;
+}
+
+.reactions button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.comments {
+    margin-top: 10px;
+}
+
+.comments input {
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.comment-preview {
+    margin-top: 5px;
+    color: #444;
 }

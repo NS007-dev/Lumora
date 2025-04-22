@@ -1,72 +1,81 @@
-/* Navbar styling */
+/* Base Styling */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(50, 50, 50, 0.85);
-    padding: 15px 30px;
+    width: 100%;
+    background-color: var(--navbar-bg, white);
     position: fixed;
     top: 0;
-    width: 100%;
-    z-index: 9999;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
 }
 
 .logo {
-    font-size: 1.5rem;
     font-weight: bold;
-    color: #f0f0f0;
+    font-size: 1.3rem;
+}
+
+/* Hide nav links on mobile */
+.navbar-center {
+    display: flex;
+    gap: 1rem;
 }
 
 .navbar-center a {
-    margin: 0 15px;
-    color: white;
     text-decoration: none;
+    color: inherit;
     font-weight: 500;
-    transition: color 0.3s;
 }
 
-.navbar-center a:hover {
-    color: #a1c4fd;
+.navbar-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
 }
 
 .theme-toggle-btn {
-    background: transparent;
+    background: none;
     border: none;
     cursor: pointer;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-    transition: color 0.3s;
-    z-index: 10000;
+    margin-left: 1rem;
 }
 
-.theme-toggle-btn:hover {
-    color: #ffd700;
+/* Hamburger button */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 1rem;
 }
 
-/* Hides accidental green button */
-button:has(svg rect[fill="green"]) {
-    display: none !important;
-}
-
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
+    .menu-toggle {
+        display: block;
     }
 
     .navbar-center {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 10px;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1rem;
+        margin-top: 1rem;
     }
 
-    .theme-toggle-btn {
-        align-self: flex-end;
+    .navbar-center.open {
+        display: flex;
+    }
+
+    .navbar-right {
+        margin-top: 0.5rem;
     }
 }
