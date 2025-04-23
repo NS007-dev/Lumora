@@ -41,3 +41,14 @@
 body {
   padding-top: 180px;
 }
+
+.page-container {
+  background-color: var(--background-light);
+  transition: background-color 0.3s ease;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+body.dark-mode .page-container {
+  background-color: var(--background-dark);
+}

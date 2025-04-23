@@ -1,6 +1,6 @@
+// src/components/PositiveContentFeed.js
 import React, { useState, useEffect } from "react";
 import "./PositiveContentFeed.css";
-import Layout from "./Layout";
 import profilePlaceholder from "../assets/placeholder.jpg";
 
 const contentFeed = [
@@ -31,7 +31,6 @@ const PositiveContentFeed = () => {
   const [likes, setLikes] = useState({});
   const [comments, setComments] = useState({});
 
-  // Load from localStorage
   useEffect(() => {
     const storedLikes = JSON.parse(localStorage.getItem("likes")) || {};
     const storedComments = JSON.parse(localStorage.getItem("comments")) || {};
@@ -39,7 +38,6 @@ const PositiveContentFeed = () => {
     setComments(storedComments);
   }, []);
 
-  // Save to localStorage whenever likes/comments change
   useEffect(() => {
     localStorage.setItem("likes", JSON.stringify(likes));
   }, [likes]);
@@ -63,42 +61,36 @@ const PositiveContentFeed = () => {
   };
 
   return (
-    <Layout>
-      <div className="positive-content-feed">
-        <h2>Positive Content Feed</h2>
-        {contentFeed.map((item) => (
-          <div className="feed-card" key={item.id}>
-            <div className="feed-header">
-              <img
-                src={item.profilePic}
-                alt="Profile"
-                className="profile-pic"
-              />
-              <a href={item.link} target="_blank" rel="noreferrer">
-                <strong>{item.title}</strong>
-              </a>
-            </div>
-            <p className="source">{item.source}</p>
-            <div className="reactions">
-              <button onClick={() => handleLike(item.id)}>
-                ❤️ {likes[item.id] || 0}
-              </button>
-            </div>
-            <div className="comments">
-              <input
-                type="text"
-                placeholder="Add a comment..."
-                value={comments[item.id] || ""}
-                onChange={(e) => handleCommentChange(item.id, e.target.value)}
-              />
-              {comments[item.id] && (
-                <p className="comment-preview">💬 {comments[item.id]}</p>
-              )}
-            </div>
+    <div className="positive-content-feed">
+      <h2>Positive Content Feed</h2>
+      {contentFeed.map((item) => (
+        <div className="feed-card" key={item.id}>
+          <div className="feed-header">
+            <img src={item.profilePic} alt="Profile" className="profile-pic" />
+            <a href={item.link} target="_blank" rel="noreferrer">
+              <strong>{item.title}</strong>
+            </a>
           </div>
-        ))}
-      </div>
-    </Layout>
+          <p className="source">{item.source}</p>
+          <div className="reactions">
+            <button onClick={() => handleLike(item.id)}>
+              ❤️ {likes[item.id] || 0}
+            </button>
+          </div>
+          <div className="comments">
+            <input
+              type="text"
+              placeholder="Add a comment..."
+              value={comments[item.id] || ""}
+              onChange={(e) => handleCommentChange(item.id, e.target.value)}
+            />
+            {comments[item.id] && (
+              <p className="comment-preview">💬 {comments[item.id]}</p>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 

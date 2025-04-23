@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./ScreenTimeChallenge.css";
-import Layout from "./Layout"; // ✅ Only import ONCE, use correct path
 
 const ScreenTimeChallenge = () => {
   const [screenTimeLogs, setScreenTimeLogs] = useState([]);
@@ -39,47 +38,46 @@ const ScreenTimeChallenge = () => {
   ).length;
 
   return (
-    <Layout>
-      <div className="screen-time-container">
-        <h1>📵 Screen Time Challenge</h1>
-        <form onSubmit={handleSubmit} className="screen-time-form">
-          <input
-            type="number"
-            placeholder="Hours spent on screen today"
-            value={inputTime}
-            onChange={(e) => setInputTime(e.target.value)}
-            min="0"
-            step="0.1"
-          />
-          <input
-            type="number"
-            placeholder="Daily screen time goal (hours)"
-            value={goalTime}
-            onChange={(e) => setGoalTime(e.target.value)}
-            min="0"
-            step="0.1"
-          />
-          <button type="submit">Add Entry</button>
-        </form>
+    <div className="screen-time-container">
+      <h1>📵 Screen Time Challenge</h1>
+      <form onSubmit={handleSubmit} className="screen-time-form">
+        <input
+          type="number"
+          placeholder="Hours spent on screen today"
+          value={inputTime}
+          onChange={(e) => setInputTime(e.target.value)}
+          min="0"
+          step="0.1"
+        />
+        <input
+          type="number"
+          placeholder="Daily screen time goal (hours)"
+          value={goalTime}
+          onChange={(e) => setGoalTime(e.target.value)}
+          min="0"
+          step="0.1"
+        />
+        <button type="submit">Add Entry</button>
+      </form>
 
-        <div className="log-summary">
-          <h3>
-            ✅ Goal Achieved: {successCount} day{successCount !== 1 ? "s" : ""}
-          </h3>
-          <ul className="log-list">
-            {screenTimeLogs.map((log) => (
-              <li
-                key={log.id}
-                className={log.timeSpent <= log.goal ? "success" : "fail"}
-              >
-                <strong>{log.date}</strong> — You spent {log.timeSpent}h (Goal:{" "}
-                {log.goal}h)
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="log-summary">
+        <h3>
+          ✅ Goal Achieved: {successCount} day
+          {successCount !== 1 ? "s" : ""}
+        </h3>
+        <ul className="log-list">
+          {screenTimeLogs.map((log) => (
+            <li
+              key={log.id}
+              className={log.timeSpent <= log.goal ? "success" : "fail"}
+            >
+              <strong>{log.date}</strong> — You spent {log.timeSpent}h (Goal:{" "}
+              {log.goal}h)
+            </li>
+          ))}
+        </ul>
       </div>
-    </Layout>
+    </div>
   );
 };
 

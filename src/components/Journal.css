@@ -1,113 +1,69 @@
-/* Journal Page Styling */
-.journal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #f4f7fc;
-    min-height: 100vh;
-    box-sizing: border-box;
-    position: relative;
+.journal-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 }
 
-/* Journal Title */
-.journal h1 {
+.journal-container h1 {
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
+    color: var(--text-color, #222);
+}
+
+.journal-input {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.journal-input textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    resize: vertical;
+    font-size: 1rem;
+}
+
+.journal-input button {
+    align-self: flex-start;
+    padding: 0.6rem 1.2rem;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.journal-input button:hover {
+    background-color: #218838;
+}
+
+.journal-entries {
+    list-style: none;
+    padding: 0;
+}
+
+.journal-entries li {
+    background: #f1f1f1;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
     color: #333;
 }
 
-/* Textarea for input */
-.journal-textarea {
-    width: 100%;
-    max-width: 600px;
-    height: 120px;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    resize: none;
-    box-sizing: border-box;
-    overflow-y: auto;
+body.dark-mode .journal-container h1,
+body.dark-mode .journal-entries li {
+    color: #f5f5f5;
+    background: #222;
 }
 
-/* Save Button */
-.save-entry-btn {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.save-entry-btn:hover {
-    background-color: #45a049;
-}
-
-/* Entries Container (scrollable) */
-.entries-container {
-    width: 100%;
-    max-width: 600px;
-    max-height: 300px;
-    /* Limit the height */
-    overflow-y: auto;
-    /* Enable scrolling for entries */
-    margin-top: 20px;
-    padding-bottom: 100px;
-    /* For smooth scrolling */
-    margin-bottom: 20px;
-    /* Add space at the bottom */
-}
-
-/* Entry Card Styling */
-.entry-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-.entry-text {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #555;
-}
-
-.entry-date {
-    font-size: 0.8rem;
-    color: #888;
-}
-
-/* Button Styling for Edit and Delete */
-.edit-entry-btn,
-.delete-entry-btn {
-    padding: 5px 10px;
-    margin-right: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.edit-entry-btn {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.delete-entry-btn {
-    background-color: #f44336;
-    color: white;
-}
-
-.edit-entry-btn:hover {
-    background-color: #45a049;
-}
-
-.delete-entry-btn:hover {
-    background-color: #e53935;
+body.dark-mode .journal-input textarea {
+    background-color: #2a2a2a;
+    color: #f5f5f5;
+    border-color: #555;
 }

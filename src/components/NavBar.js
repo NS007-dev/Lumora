@@ -1,22 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Moon, Sun } from "lucide-react";
 import "./NavBar.css";
-import { Moon, Sun, Menu, X } from "lucide-react";
 
 function Navbar({ isDarkMode, toggleDarkMode }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleLinkClick = () => {
-    setMenuOpen(false); // close the menu when a link is clicked
-  };
+  const handleToggle = () => setIsOpen(!isOpen);
+  const handleLinkClick = () => setIsOpen(false); // collapse on nav link click
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isDarkMode ? "dark" : ""}`}>
       <div className="navbar-left">
         <span className="logo">🌙 Lumora</span>
       </div>
 
-      <div className={`navbar-center ${menuOpen ? "open" : ""}`}>
+      <div className={`navbar-center ${isOpen ? "open" : ""}`}>
         <Link to="/" onClick={handleLinkClick}>
           Home
         </Link>
@@ -26,10 +25,10 @@ function Navbar({ isDarkMode, toggleDarkMode }) {
         <Link to="/journal" onClick={handleLinkClick}>
           Journal
         </Link>
-        <Link to="/mood" onClick={handleLinkClick}>
+        <Link to="/moodtracker" onClick={handleLinkClick}>
           Mood Tracker
         </Link>
-        <Link to="/screentime" onClick={handleLinkClick}>
+        <Link to="/screen-time" onClick={handleLinkClick}>
           Screen Time
         </Link>
         <Link to="/positive-feed" onClick={handleLinkClick}>
@@ -41,21 +40,18 @@ function Navbar({ isDarkMode, toggleDarkMode }) {
       </div>
 
       <div className="navbar-right">
-        <button
-          className="theme-toggle-btn"
-          onClick={toggleDarkMode}
-          aria-label="Toggle dark mode"
-        >
+        <button className="theme-toggle-btn" onClick={toggleDarkMode}>
           {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
         </button>
 
-        <button
-          className="hamburger"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+        <div
+          className={`hamburger ${isOpen ? "open" : ""}`}
+          onClick={handleToggle}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </nav>
   );

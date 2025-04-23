@@ -1,60 +1,40 @@
-import React, { useState, useEffect } from "react";
+// src/components/MoodTracker.js
+import React, { useState } from "react";
 import "./MoodTracker.css";
-import Layout from "./Layout";
-
-const moods = [
-  { label: "Happy", color: "#FFD700" },
-  { label: "Sad", color: "#1E90FF" },
-  { label: "Anxious", color: "#FF6347" },
-  { label: "Calm", color: "#98FB98" },
-];
 
 const MoodTracker = () => {
-  const [selectedMood, setSelectedMood] = useState(null);
-  const [moodHistory, setMoodHistory] = useState(() => {
-    const saved = localStorage.getItem("moodHistory");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [mood, setMood] = useState("");
+  const [entries, setEntries] = useState([]);
 
-  useEffect(() => {
-    localStorage.setItem("moodHistory", JSON.stringify(moodHistory));
-  }, [moodHistory]);
-
-  const handleMoodSelect = (mood) => {
-    setSelectedMood(mood);
-    setMoodHistory([
-      { mood, date: new Date().toLocaleDateString() },
-      ...moodHistory,
-    ]);
+  const handleSubmit = () => {
+    if (mood.trim()) {
+      setEntries([{ mood, date: new Date().toLocaleDateString() }, ...entries]);
+      setMood("");
+    }
   };
 
   return (
-    <Layout>
-      <div className="mood-tracker-container">
-        <h2>Mood Tracker</h2>
-        <div className="mood-options">
-          {moods.map(({ label, color }) => (
-            <button
-              key={label}
-              style={{ backgroundColor: color }}
-              onClick={() => handleMoodSelect(label)}
-            >
-              {label}
-            </button>
+    <div className="page-container">
+      <div className="mood-container">
+        <h1>Track Your Mood</h1>
+        <div className="mood-input">
+          <input
+            type="text"
+            placeholder="How are you feeling today?"
+            value={mood}
+            onChange={(e) => setMood(e.target.value)}
+          />
+          <button onClick={handleSubmit}>Add Mood</button>
+        </div>
+        <ul className="mood-history">
+          {entries.map((entry, i) => (
+            <li key={i}>
+              <strong>{entry.date}</strong>: {entry.mood}
+            </li>
           ))}
-        </div>
-        <div className="mood-history">
-          <h3>Mood History</h3>
-          <ul>
-            {moodHistory.map((entry, index) => (
-              <li key={index}>
-                {entry.date}: {entry.mood}
-              </li>
-            ))}
-          </ul>
-        </div>
+        </ul>
       </div>
-    </Layout>
+    </div>
   );
 };
 

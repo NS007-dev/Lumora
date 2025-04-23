@@ -1,41 +1,37 @@
-import React, { useState, useEffect, useRef } from "react";
+// src/components/Journal.js
+import React, { useState } from "react";
 import "./Journal.css";
-import Layout from "./Layout";
 
 const Journal = () => {
-  const [entries, setEntries] = useState(() => {
-    const saved = localStorage.getItem("journalEntries");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [entries, setEntries] = useState([]);
+  const [input, setInput] = useState("");
 
-  const inputRef = useRef();
-
-  useEffect(() => {
-    localStorage.setItem("journalEntries", JSON.stringify(entries));
-  }, [entries]);
-
-  const addEntry = () => {
-    const text = inputRef.current.value;
-    if (text) {
-      const newEntry = { id: Date.now(), text };
-      setEntries([newEntry, ...entries]);
-      inputRef.current.value = "";
+  const handleAddEntry = () => {
+    if (input.trim()) {
+      setEntries([input, ...entries]);
+      setInput("");
     }
   };
 
   return (
-    <Layout>
+    <div className="page-container">
       <div className="journal-container">
-        <h2>Self-Reflection Journal</h2>
-        <textarea ref={inputRef} placeholder="Write your thoughts..." />
-        <button onClick={addEntry}>Add Entry</button>
-        <ul>
-          {entries.map((entry) => (
-            <li key={entry.id}>{entry.text}</li>
+        <h1>Self-Reflection Journal</h1>
+        <div className="journal-input">
+          <textarea
+            placeholder="Write your thoughts..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button onClick={handleAddEntry}>Add Entry</button>
+        </div>
+        <ul className="journal-entries">
+          {entries.map((entry, index) => (
+            <li key={index}>{entry}</li>
           ))}
         </ul>
       </div>
-    </Layout>
+    </div>
   );
 };
 

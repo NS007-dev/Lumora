@@ -1,12 +1,12 @@
 import React from "react";
-import NavBar from "./NavBar";
+import Navbar from "./NavBar";
 
 const Layout = ({ children, isDarkMode, toggleDarkMode }) => {
   return (
-    <div>
-      <NavBar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <main>{children}</main>
-    </div>
+    <>
+      <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <main className="page-container">{children}</main>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 // src/components/Affirmation.js
 import React, { useState, useEffect } from "react";
 import quotesData from "../data/quotes.json";
-import "./Affirmation.css"; // Import CSS for styling
+import "./Affirmation.css";
 
 const Affirmation = () => {
   const getRandomQuote = () =>
@@ -23,12 +23,14 @@ const Affirmation = () => {
   };
 
   return (
-    <div className="affirmation-container">
-      <div className="affirmation-card">
-        <p className="affirmation-text">{quote}</p>
-        <button className="affirmation-button" onClick={handleNewQuote}>
-          New Affirmation
-        </button>
+    <div className="page-container">
+      <div className="affirmation-container">
+        <div className="affirmation-card">
+          <p className="affirmation-text">{quote}</p>
+          <button className="affirmation-button" onClick={handleNewQuote}>
+            New Affirmation
+          </button>
+        </div>
       </div>
     </div>
   );
