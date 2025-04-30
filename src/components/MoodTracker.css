@@ -1,64 +1,111 @@
-.mood-container {
+/* General body background */
+body {
+    background-color: #f0f4f8;
+}
+
+/* Mood Tracker container */
+.mood-tracker-container {
+    padding: 2rem;
     max-width: 700px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
+    margin: auto;
+    text-align: center;
 }
 
-.mood-container h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.mood-input {
+/* Mood buttons */
+.mood-buttons {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 1rem 0;
 }
 
-.mood-input input {
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 1rem;
-}
-
-.mood-input button {
-    align-self: flex-start;
-    padding: 0.6rem 1.2rem;
-    background-color: #007bff;
+.mood-buttons button {
+    border: 2px solid #6a4c9c;
+    /* Bluey purple border */
+    background-color: #7c5cc4;
+    /* Bluey purple background */
     color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    padding: 0.75rem 1.2rem;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: 0.2s;
 }
 
-.mood-input button:hover {
-    background-color: #0056b3;
+.mood-buttons button:hover,
+.mood-buttons button.selected {
+    border-color: #5a3c89;
+    /* Darker purple border */
+    background-color: #6a4c9c;
+    /* Darker purple background */
+    color: #f0f0f0;
+    /* Light text when selected */
 }
 
-.mood-history {
-    list-style: none;
+/* Streak display */
+.streak-display {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #6a4c9c;
+    /* Bluey purple streak display */
+}
+
+/* Mood history list */
+.mood-history ul {
     padding: 0;
+    list-style: none;
+    margin-top: 2rem;
 }
 
 .mood-history li {
-    background: #f1f1f1;
-    margin-bottom: 1rem;
-    padding: 1rem;
+    background-color: #e8e7ff;
+    /* Light bluey purple background */
+    padding: 0.8rem;
+    margin: 0.5rem 0;
     border-radius: 8px;
+    text-align: left;
+    color: #6a4c9c;
+    /* Bluey purple text color */
 }
 
-body.dark-mode .mood-container h1,
-body.dark-mode .mood-history li {
-    color: #f5f5f5;
-    background: #222;
+.mood-history li span {
+    text-transform: capitalize;
 }
 
-body.dark-mode .mood-input input {
-    background-color: #2a2a2a;
-    color: #f5f5f5;
-    border-color: #555;
+/* Save button */
+.save-btn {
+    margin: 1rem 0;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #6a4c9c;
+    /* Bluey purple background */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.save-btn:disabled {
+    background-color: #ccc;
+}
+
+/* Calendar */
+.react-calendar {
+    border: none;
+    font-family: 'Arial', sans-serif;
+}
+
+.react-calendar__tile {
+    background-color: #e8e7ff;
+    /* Light bluey purple background for each day */
+    border-radius: 8px;
+    color: #6a4c9c;
+    /* Bluey purple text */
+}
+
+.react-calendar__tile:hover {
+    background-color: #7c5cc4;
+    /* Hover effect - bluey purple */
+    color: #f0f0f0;
 }
