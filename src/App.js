@@ -9,6 +9,7 @@ import PositiveContentFeed from "./components/PositiveContentFeed";
 import UserProfile from "./components/UserProfile";
 import Layout from "./components/Layout";
 import "./styles/theme.css";
+import AddAffirmation from "./components/AddAffirmation";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -38,6 +39,7 @@ function App() {
           <Route path="/screen-time" element={<ScreenTimeChallenge />} />
           <Route path="/positive-feed" element={<PositiveContentFeed />} />
           <Route path="/profile" element={<UserProfile />} />
+          <Route path="/add-affirmation" element={<AddAffirmation />} />
         </Routes>
       </Layout>
     </Router>

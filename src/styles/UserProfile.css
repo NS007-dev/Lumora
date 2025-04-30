@@ -1,4 +1,3 @@
-/* General Body & App Styling */
 body,
 html,
 .App {
@@ -7,7 +6,6 @@ html,
     font-family: 'Arial', sans-serif;
 }
 
-/* Profile Container */
 .profile-container {
     max-width: 900px;
     margin: 0 auto;
@@ -19,7 +17,6 @@ html,
     transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Profile Header */
 .profile-header {
     display: flex;
     gap: 2rem;
@@ -27,7 +24,6 @@ html,
     margin-bottom: 2rem;
 }
 
-/* Profile Image Wrapper */
 .profile-image-wrapper {
     display: flex;
     flex-direction: column;
@@ -60,7 +56,6 @@ html,
     display: none;
 }
 
-/* Upload Label */
 .upload-label {
     margin-top: 1rem;
     color: var(--primary-color, #6a9bf6);
@@ -74,12 +69,10 @@ html,
     color: var(--secondary-color, #b679f8);
 }
 
-/* Profile Info */
 .profile-info {
     flex-grow: 1;
 }
 
-/* Username & Bio */
 .username {
     font-size: 2rem;
     font-weight: bold;
@@ -91,7 +84,6 @@ html,
     color: #666;
 }
 
-/* Profile Stats */
 .profile-stats {
     margin: 1.5rem 0;
     display: flex;
@@ -100,7 +92,6 @@ html,
     color: #777;
 }
 
-/* Edit Profile Button */
 .edit-profile-button {
     padding: 0.8rem 1.5rem;
     border: none;
@@ -117,7 +108,6 @@ html,
     box-shadow: 0 6px 15px rgba(106, 155, 246, 0.3);
 }
 
-/* Post Grid */
 .post-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -140,6 +130,28 @@ html,
 .post-item:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating Add Button */
+.floating-add-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6a9bf6, #b679f8);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    transition: transform 0.2s ease;
+}
+
+.floating-add-button:hover {
+    transform: scale(1.1);
 }
 
 /* Dark Mode */

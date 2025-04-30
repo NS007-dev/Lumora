@@ -12,6 +12,13 @@ const UserProfile = () => {
     localStorage.getItem("bio") || "Hi, welcome to my profile!"
   );
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [affirmations, setAffirmations] = useState([]);
+
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("affirmations")) || [];
+    const sorted = saved.sort((a, b) => new Date(b.date) - new Date(a.date));
+    setAffirmations(sorted);
+  }, []);
 
   useEffect(() => {
     document.body.className = theme;
@@ -35,16 +42,32 @@ const UserProfile = () => {
     localStorage.setItem("theme", newTheme);
   };
 
+  const deleteAffirmation = (index) => {
+    const updated = [...affirmations];
+    updated.splice(index, 1);
+    localStorage.setItem("affirmations", JSON.stringify(updated));
+    setAffirmations(updated);
+  };
+
+  const editAffirmation = (index) => {
+    const currentText = affirmations[index].text;
+    const newText = prompt("Edit your affirmation:", currentText);
+    if (newText && newText.trim()) {
+      const updated = [...affirmations];
+      updated[index].text = newText.trim();
+      localStorage.setItem("affirmations", JSON.stringify(updated));
+      setAffirmations(updated);
+    }
+  };
+
   return (
     <div className="profile-container">
-      {/* Theme Toggle */}
       <div className="theme-toggle-wrapper">
         <button onClick={toggleTheme}>
           Switch to {theme === "light" ? "Dark" : "Light"} Mode
         </button>
       </div>
 
-      {/* Profile Header */}
       <div className="profile-header">
         <div className="profile-image-wrapper">
           {profileImage ? (
@@ -67,28 +90,39 @@ const UserProfile = () => {
           <h1 className="username">{username}</h1>
           <p className="bio">{bio}</p>
 
-          {/* Stats */}
           <div className="profile-stats">
-            <span>Posts: 50</span>
+            <span>Posts: {affirmations.length}</span>
             <span>Followers: 1200</span>
             <span>Following: 180</span>
           </div>
 
-          {/* Edit Profile Button */}
           <button className="edit-profile-button">Edit Profile</button>
         </div>
       </div>
 
-      {/* User's Post Grid */}
       <div className="post-grid">
-        {/* Placeholder posts, these can be dynamic */}
-        <div className="post-item">Post 1</div>
-        <div className="post-item">Post 2</div>
-        <div className="post-item">Post 3</div>
-        <div className="post-item">Post 4</div>
-        <div className="post-item">Post 5</div>
-        <div className="post-item">Post 6</div>
+        {affirmations.length > 0 ? (
+          affirmations.map((post, index) => (
+            <div key={index} className="post-item">
+              <p>{post.text}</p>
+              <small>{new Date(post.date).toLocaleString()}</small>
+              <div className="post-actions">
+                <button onClick={() => editAffirmation(index)}>Edit</button>
+                <button onClick={() => deleteAffirmation(index)}>Delete</button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="post-item">No affirmations yet.</div>
+        )}
       </div>
+
+      <button
+        className="floating-add-button"
+        onClick={() => (window.location.href = "/add-affirmation")}
+      >
+        +
+      </button>
     </div>
   );
 };
