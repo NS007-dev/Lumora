@@ -1,81 +1,72 @@
 import React, { useState, useEffect } from "react";
+import quotesData from "../data/quotes.json";
 import "./Affirmation.css";
 
-const Affirmations = () => {
-  const [affirmations, setAffirmations] = useState([]);
-  const [newAffirmation, setNewAffirmation] = useState("");
+const Affirmation = () => {
+  const [quote, setQuote] = useState("");
+  const [customQuotes, setCustomQuotes] = useState([]);
+  const [newCustomQuote, setNewCustomQuote] = useState("");
+
+  const getAllQuotes = () => {
+    const savedCustom = JSON.parse(localStorage.getItem("customQuotes")) || [];
+    return [...quotesData.map((q) => q.quote), ...savedCustom];
+  };
+
+  const getRandomQuote = (allQuotes) =>
+    allQuotes[Math.floor(Math.random() * allQuotes.length)];
 
   useEffect(() => {
-    const savedAffirmations =
-      JSON.parse(localStorage.getItem("affirmations")) || [];
-    setAffirmations(savedAffirmations);
+    const savedQuote = localStorage.getItem("lastQuote");
+    const savedCustom = JSON.parse(localStorage.getItem("customQuotes")) || [];
+
+    setCustomQuotes(savedCustom);
+    setQuote(savedQuote || getRandomQuote(getAllQuotes()));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("affirmations", JSON.stringify(affirmations));
-  }, [affirmations]);
+    localStorage.setItem("lastQuote", quote);
+  }, [quote]);
 
-  const addAffirmation = () => {
-    if (newAffirmation.trim() === "") return;
-    const newEntry = {
-      id: Date.now(),
-      text: newAffirmation.trim(),
-      date: new Date().toISOString(),
-    };
-    setAffirmations([newEntry, ...affirmations]);
-    setNewAffirmation("");
+  const handleNewQuote = () => {
+    const allQuotes = getAllQuotes();
+    let newQuote;
+    do {
+      newQuote = getRandomQuote(allQuotes);
+    } while (newQuote === quote && allQuotes.length > 1);
+    setQuote(newQuote);
   };
 
-  const deleteAffirmation = (id) => {
-    setAffirmations(affirmations.filter((a) => a.id !== id));
-  };
+  const handleAddCustomQuote = () => {
+    if (!newCustomQuote.trim()) return;
 
-  const editAffirmation = (id) => {
-    const updatedText = prompt("Edit your affirmation:");
-    if (!updatedText) return;
-    const updatedAffirmations = affirmations.map((a) =>
-      a.id === id ? { ...a, text: updatedText } : a
-    );
-    setAffirmations(updatedAffirmations);
-  };
-
-  const formatDate = (isoString) => {
-    const date = new Date(isoString);
-    return (
-      date.toLocaleDateString() +
-      " " +
-      date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-    );
+    const updatedCustomQuotes = [...customQuotes, newCustomQuote.trim()];
+    setCustomQuotes(updatedCustomQuotes);
+    localStorage.setItem("customQuotes", JSON.stringify(updatedCustomQuotes));
+    setNewCustomQuote("");
   };
 
   return (
-    <div className="affirmations-container">
-      <h2>Your Affirmations</h2>
+    <div className="affirmation-container">
+      <div className="affirmation-card">
+        <p className="affirmation-text">{quote}</p>
 
-      <div className="input-wrapper">
-        <input
-          type="text"
-          placeholder="Write a new affirmation..."
-          value={newAffirmation}
-          onChange={(e) => setNewAffirmation(e.target.value)}
-        />
-        <button onClick={addAffirmation}>Add</button>
+        <button className="affirmation-button" onClick={handleNewQuote}>
+          New Affirmation
+        </button>
       </div>
 
-      <ul className="affirmation-list">
-        {affirmations.map((a) => (
-          <li key={a.id} className="affirmation-item">
-            <div className="affirmation-text">{a.text}</div>
-            <div className="affirmation-meta">{formatDate(a.date)}</div>
-            <div className="affirmation-actions">
-              <button onClick={() => editAffirmation(a.id)}>Edit</button>
-              <button onClick={() => deleteAffirmation(a.id)}>Delete</button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <div className="add-affirmation">
+        <h3>Add Your Own Affirmation</h3>
+        <input
+          type="text"
+          value={newCustomQuote}
+          onChange={(e) => setNewCustomQuote(e.target.value)}
+          placeholder="Write your affirmation..."
+        />
+        <button onClick={handleAddCustomQuote}>Add</button>
+      </div>
     </div>
   );
 };
 
-export default Affirmations;
+export default Affirmation;

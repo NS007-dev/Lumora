@@ -13,6 +13,9 @@ const UserProfile = () => {
   );
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [affirmations, setAffirmations] = useState([]);
+  const [editingProfile, setEditingProfile] = useState(false);
+  const [tempUsername, setTempUsername] = useState(username);
+  const [tempBio, setTempBio] = useState(bio);
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("affirmations")) || [];
@@ -60,6 +63,16 @@ const UserProfile = () => {
     }
   };
 
+  const handleProfileEdit = () => {
+    if (editingProfile) {
+      setUsername(tempUsername.trim());
+      setBio(tempBio.trim());
+      localStorage.setItem("username", tempUsername.trim());
+      localStorage.setItem("bio", tempBio.trim());
+    }
+    setEditingProfile(!editingProfile);
+  };
+
   return (
     <div className="profile-container">
       <div className="theme-toggle-wrapper">
@@ -87,25 +100,44 @@ const UserProfile = () => {
         </div>
 
         <div className="profile-info">
-          <h1 className="username">{username}</h1>
-          <p className="bio">{bio}</p>
+          {editingProfile ? (
+            <>
+              <input
+                className="edit-input"
+                value={tempUsername}
+                onChange={(e) => setTempUsername(e.target.value)}
+              />
+              <textarea
+                className="edit-textarea"
+                value={tempBio}
+                onChange={(e) => setTempBio(e.target.value)}
+              />
+            </>
+          ) : (
+            <>
+              <h1 className="username">{username}</h1>
+              <p className="bio">{bio}</p>
+            </>
+          )}
 
           <div className="profile-stats">
             <span>Posts: {affirmations.length}</span>
-            <span>Followers: 1200</span>
-            <span>Following: 180</span>
           </div>
 
-          <button className="edit-profile-button">Edit Profile</button>
+          <button className="edit-profile-button" onClick={handleProfileEdit}>
+            {editingProfile ? "Save Profile" : "Edit Profile"}
+          </button>
         </div>
       </div>
 
-      <div className="post-grid">
+      <div className="profile-posts">
         {affirmations.length > 0 ? (
           affirmations.map((post, index) => (
-            <div key={index} className="post-item">
-              <p>{post.text}</p>
-              <small>{new Date(post.date).toLocaleString()}</small>
+            <div key={index} className="profile-post">
+              <p className="affirmation-text">{post.text}</p>
+              <small className="affirmation-date">
+                {new Date(post.date).toLocaleString()}
+              </small>
               <div className="post-actions">
                 <button onClick={() => editAffirmation(index)}>Edit</button>
                 <button onClick={() => deleteAffirmation(index)}>Delete</button>
@@ -113,7 +145,7 @@ const UserProfile = () => {
             </div>
           ))
         ) : (
-          <div className="post-item">No affirmations yet.</div>
+          <div className="profile-post">No affirmations yet.</div>
         )}
       </div>
 
