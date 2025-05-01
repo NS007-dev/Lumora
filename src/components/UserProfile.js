@@ -13,9 +13,7 @@ const UserProfile = () => {
   );
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [affirmations, setAffirmations] = useState([]);
-  const [editingProfile, setEditingProfile] = useState(false);
-  const [tempUsername, setTempUsername] = useState(username);
-  const [tempBio, setTempBio] = useState(bio);
+  const [editing, setEditing] = useState(false);
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("affirmations")) || [];
@@ -63,14 +61,10 @@ const UserProfile = () => {
     }
   };
 
-  const handleProfileEdit = () => {
-    if (editingProfile) {
-      setUsername(tempUsername.trim());
-      setBio(tempBio.trim());
-      localStorage.setItem("username", tempUsername.trim());
-      localStorage.setItem("bio", tempBio.trim());
-    }
-    setEditingProfile(!editingProfile);
+  const handleProfileSave = () => {
+    localStorage.setItem("username", username);
+    localStorage.setItem("bio", bio);
+    setEditing(false);
   };
 
   return (
@@ -100,33 +94,38 @@ const UserProfile = () => {
         </div>
 
         <div className="profile-info">
-          {editingProfile ? (
+          {editing ? (
             <>
               <input
-                className="edit-input"
-                value={tempUsername}
-                onChange={(e) => setTempUsername(e.target.value)}
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="edit-input username-input"
               />
               <textarea
-                className="edit-textarea"
-                value={tempBio}
-                onChange={(e) => setTempBio(e.target.value)}
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                className="edit-input bio-input"
               />
+              <button
+                onClick={handleProfileSave}
+                className="edit-profile-button"
+              >
+                Save
+              </button>
             </>
           ) : (
             <>
               <h1 className="username">{username}</h1>
               <p className="bio">{bio}</p>
+              <button
+                className="edit-profile-button"
+                onClick={() => setEditing(true)}
+              >
+                Edit Profile
+              </button>
             </>
           )}
-
-          <div className="profile-stats">
-            <span>Posts: {affirmations.length}</span>
-          </div>
-
-          <button className="edit-profile-button" onClick={handleProfileEdit}>
-            {editingProfile ? "Save Profile" : "Edit Profile"}
-          </button>
         </div>
       </div>
 
