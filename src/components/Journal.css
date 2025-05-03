@@ -3,97 +3,94 @@
     margin: 0 auto;
     padding: 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    background: #fdf7fb;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    color: #4d2c4b;
 }
 
 .journal-title {
     text-align: center;
     font-size: 2rem;
-    color: #5a4fcf;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    color: #d66ba0;
 }
 
 .journal-textarea {
     width: 100%;
     height: 120px;
     padding: 1rem;
-    border-radius: 12px;
-    border: 1px solid #ccc;
     font-size: 1rem;
-    resize: vertical;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border: 2px solid #f1cbe4;
+    border-radius: 10px;
+    resize: none;
     margin-bottom: 1rem;
+    background: #fffafc;
 }
 
-.journal-button {
-    background-color: #6f63f8;
-    color: white;
+.save-button {
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    padding: 0.6rem 1.4rem;
+    background: #f7b2d9;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 10px;
+    color: white;
+    border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s ease;
-    display: block;
-    margin: 0 auto 2rem auto;
 }
 
-.journal-button:hover {
-    background-color: #5847d1;
+.save-button:hover {
+    background: #ec96c9;
 }
 
-.entries {
+.entries-wrapper {
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.entries-scroll {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
 }
 
 .entry-card {
-    background: #fafafa;
-    padding: 1.25rem;
-    border-radius: 14px;
-    box-shadow: 0 2px 10px rgba(90, 79, 207, 0.1);
-    transition: transform 0.2s;
-}
-
-.entry-card:hover {
-    transform: scale(1.01);
+    background: #fff0f7;
+    padding: 1rem;
+    border-left: 5px solid #d66ba0;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .entry-text {
-    font-size: 1.05rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
     white-space: pre-wrap;
 }
 
 .entry-date {
     font-size: 0.85rem;
-    color: #888;
-    margin-bottom: 0.75rem;
-}
-
-.entry-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
+    color: #7e557e;
 }
 
 .entry-actions button {
-    background: #eee;
+    background: none;
     border: none;
-    padding: 0.5rem 0.9rem;
-    border-radius: 8px;
+    color: #c54e87;
     cursor: pointer;
-    font-size: 0.9rem;
-    transition: background 0.2s ease;
+    margin-right: 10px;
+    font-weight: bold;
 }
 
 .entry-actions button:hover {
-    background: #ddd;
+    text-decoration: underline;
 }
 
 .no-entries {
     text-align: center;
-    color: #999;
+    color: #b07fa8;
     font-style: italic;
 }
