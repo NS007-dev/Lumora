@@ -1,21 +1,37 @@
+/* Base styling */
 .journal-container {
     max-width: 700px;
     margin: 0 auto;
     padding: 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fdf7fb;
     border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     color: #4d2c4b;
+    transition: background 0.3s ease;
 }
 
 .journal-title {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #d66ba0;
 }
 
+/* Theme selector */
+.theme-selector {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+select {
+    padding: 0.4rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Textarea + button */
 .journal-textarea {
     width: 100%;
     height: 120px;
@@ -32,7 +48,6 @@
     display: block;
     margin: 0 auto 1.5rem auto;
     padding: 0.6rem 1.4rem;
-    background: #f7b2d9;
     border: none;
     color: white;
     border-radius: 8px;
@@ -41,10 +56,7 @@
     transition: background 0.3s ease;
 }
 
-.save-button:hover {
-    background: #ec96c9;
-}
-
+/* Entries */
 .entries-wrapper {
     max-height: 350px;
     overflow-y: auto;
@@ -58,11 +70,11 @@
 }
 
 .entry-card {
-    background: #fff0f7;
     padding: 1rem;
     border-left: 5px solid #d66ba0;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    background: #fff0f7;
 }
 
 .entry-text {
@@ -93,4 +105,65 @@
     text-align: center;
     color: #b07fa8;
     font-style: italic;
+}
+
+/* 🌸 Themes */
+.journal-container.pink {
+    background: #fdf7fb;
+}
+
+.journal-container.pink .save-button {
+    background: #f7b2d9;
+}
+
+.journal-container.pink .save-button:hover {
+    background: #ec96c9;
+}
+
+.journal-container.blue {
+    background: #f0f8ff;
+}
+
+.journal-container.blue .save-button {
+    background: #8ecae6;
+}
+
+.journal-container.blue .save-button:hover {
+    background: #61accb;
+}
+
+.journal-container.purple {
+    background: #f3e8ff;
+}
+
+.journal-container.purple .save-button {
+    background: #c084fc;
+}
+
+.journal-container.purple .save-button:hover {
+    background: #a855f7;
+}
+
+.journal-container.mint {
+    background: #e0fff9;
+}
+
+.journal-container.mint .save-button {
+    background: #74e6d4;
+}
+
+.journal-container.mint .save-button:hover {
+    background: #56d5c4;
+}
+
+.journal-container.peach {
+    background: #fff0e6;
+}
+
+.journal-container.peach .save-button {
+    background: #ffb199;
+}
+
+.journal-container.peach .save-button:hover {
+    background: #ff9475;
 }
