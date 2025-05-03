@@ -2,16 +2,23 @@ import React, { useState, useEffect } from "react";
 import "./Journal.css";
 
 const LOCAL_STORAGE_KEY = "journalEntries";
+const THEME_KEY = "journalTheme";
 
 const Journal = () => {
   const [entries, setEntries] = useState([]);
   const [text, setText] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
+  const [theme, setTheme] = useState("pink");
 
   useEffect(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (saved) {
       setEntries(JSON.parse(saved));
+    }
+
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme) {
+      setTheme(savedTheme);
     }
   }, []);
 
@@ -48,9 +55,27 @@ const Journal = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
   };
 
+  const handleThemeChange = (e) => {
+    const newTheme = e.target.value;
+    setTheme(newTheme);
+    localStorage.setItem(THEME_KEY, newTheme);
+  };
+
   return (
-    <div className="journal-container">
+    <div className={`journal-container ${theme}`}>
       <h2 className="journal-title">💖 Self-Reflection Journal 💖</h2>
+
+      <div className="theme-selector">
+        <label htmlFor="theme">🎨 Theme:</label>
+        <select id="theme" value={theme} onChange={handleThemeChange}>
+          <option value="pink">Pink</option>
+          <option value="blue">Blue</option>
+          <option value="purple">Purple</option>
+          <option value="mint">Mint</option>
+          <option value="peach">Peach</option>
+        </select>
+      </div>
+
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
