@@ -8,7 +8,6 @@ const Journal = () => {
   const [text, setText] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
 
-  // Load saved entries from localStorage on component mount
   useEffect(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (saved) {
@@ -51,23 +50,24 @@ const Journal = () => {
 
   return (
     <div className="journal-container">
-      <h2>Self-Reflection Journal</h2>
+      <h2 className="journal-title">My Journal</h2>
       <textarea
+        className="journal-textarea"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Write about your thoughts..."
+        placeholder="What's on your mind today?"
       />
-      <button onClick={handleSubmit}>
+      <button className="journal-button" onClick={handleSubmit}>
         {editingIndex !== null ? "Update Entry" : "Save Entry"}
       </button>
 
       <div className="entries">
         {entries.length === 0 && <p className="no-entries">No entries yet</p>}
         {entries.map((entry, index) => (
-          <div className="entry" key={index}>
-            <p>{entry.text}</p>
-            <p className="date">{entry.date}</p>
-            <div className="actions">
+          <div className="entry-card" key={index}>
+            <p className="entry-text">{entry.text}</p>
+            <p className="entry-date">{entry.date}</p>
+            <div className="entry-actions">
               <button onClick={() => handleEdit(index)}>Edit</button>
               <button onClick={() => handleDelete(index)}>Delete</button>
             </div>
