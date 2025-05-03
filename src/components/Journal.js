@@ -12,16 +12,9 @@ const Journal = () => {
   useEffect(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (saved) {
-      console.log("Loaded from localStorage:", saved);
       setEntries(JSON.parse(saved));
     }
   }, []);
-
-  // Save entries to localStorage whenever they change
-  useEffect(() => {
-    console.log("Saving to localStorage:", entries); // Debugging log
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(entries));
-  }, [entries]);
 
   const handleSubmit = () => {
     if (!text.trim()) return;
@@ -31,18 +24,18 @@ const Journal = () => {
       date: new Date().toLocaleString(),
     };
 
-    console.log("Current Entries:", entries); // Debugging log
-
+    let updatedEntries;
     if (editingIndex !== null) {
-      const updated = [...entries];
-      updated[editingIndex] = newEntry;
-      setEntries(updated);
+      updatedEntries = [...entries];
+      updatedEntries[editingIndex] = newEntry;
       setEditingIndex(null);
     } else {
-      setEntries([newEntry, ...entries]);
+      updatedEntries = [newEntry, ...entries];
     }
 
-    setText(""); // Clear the input field after submitting
+    setEntries(updatedEntries);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedEntries));
+    setText("");
   };
 
   const handleEdit = (index) => {
@@ -53,6 +46,7 @@ const Journal = () => {
   const handleDelete = (index) => {
     const updated = entries.filter((_, i) => i !== index);
     setEntries(updated);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
   };
 
   return (
