@@ -11,7 +11,6 @@ const UserProfile = () => {
   const [bio, setBio] = useState(
     localStorage.getItem("bio") || "Hi, welcome to my profile!"
   );
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [affirmations, setAffirmations] = useState([]);
   const [editing, setEditing] = useState(false);
 
@@ -20,10 +19,6 @@ const UserProfile = () => {
     const sorted = saved.sort((a, b) => new Date(b.date) - new Date(a.date));
     setAffirmations(sorted);
   }, []);
-
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -35,12 +30,6 @@ const UserProfile = () => {
       };
       reader.readAsDataURL(file);
     }
-  };
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
   };
 
   const deleteAffirmation = (index) => {
@@ -68,32 +57,23 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="profile-container">
-      <div className="theme-toggle-wrapper">
-        <button onClick={toggleTheme}>
-          Switch to {theme === "light" ? "Dark" : "Light"} Mode
-        </button>
-      </div>
-
-      <div className="profile-header">
-        <div className="profile-image-wrapper">
-          {profileImage ? (
-            <img src={profileImage} alt="Profile" className="profile-image" />
-          ) : (
-            <div className="profile-image-placeholder">No Image</div>
-          )}
-          <label htmlFor="imageUpload" className="upload-label">
-            Change Profile Picture
+    <div className="insta-profile-container">
+      <div className="insta-header">
+        <div className="insta-profile-pic">
+          <label htmlFor="imageUpload">
+            <img src={profileImage || "/default-profile.png"} alt="Profile" />
+            <div className="edit-overlay">Edit</div>
           </label>
           <input
             id="imageUpload"
             type="file"
             accept="image/*"
             onChange={handleImageChange}
+            style={{ display: "none" }}
           />
         </div>
 
-        <div className="profile-info">
+        <div className="insta-user-info">
           {editing ? (
             <>
               <input
@@ -116,8 +96,8 @@ const UserProfile = () => {
             </>
           ) : (
             <>
-              <h1 className="username">{username}</h1>
-              <p className="bio">{bio}</p>
+              <h2 className="insta-username">{username}</h2>
+              <p className="insta-bio">{bio}</p>
               <button
                 className="edit-profile-button"
                 onClick={() => setEditing(true)}
@@ -129,7 +109,8 @@ const UserProfile = () => {
         </div>
       </div>
 
-      <div className="profile-posts">
+      <div className="insta-posts">
+        <h3>Saved Affirmations</h3>
         {affirmations.length > 0 ? (
           affirmations.map((post, index) => (
             <div key={index} className="profile-post">
@@ -144,7 +125,7 @@ const UserProfile = () => {
             </div>
           ))
         ) : (
-          <div className="profile-post">No affirmations yet.</div>
+          <p>No affirmations saved yet.</p>
         )}
       </div>
 
