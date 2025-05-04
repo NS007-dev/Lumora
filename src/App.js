@@ -8,7 +8,8 @@ import ScreenTimeChallenge from "./components/ScreenTimeChallenge";
 import PositiveContentFeed from "./components/PositiveContentFeed";
 import UserProfile from "./components/UserProfile";
 import Layout from "./components/Layout";
-import "./styles/theme.css";
+// import "./styles/theme.css";
+import "./App.css";
 import AddAffirmation from "./components/AddAffirmation";
 
 function App() {
