@@ -1,0 +1,19 @@
+/* ThemeToggle.css */
+.theme-dropdown {
+    border-radius: 8px;
+    padding: 0.3rem 0.5rem;
+    background-color: #fceeff;
+    border: 1px solid #d2b4de;
+    color: #5a3e69;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-dropdown:hover {
+    background-color: #f9e4ff;
+    border-color: #c39bd3;
+}

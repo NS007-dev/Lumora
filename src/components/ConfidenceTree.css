@@ -1,0 +1,46 @@
+.confidence-tree-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    z-index: 999;
+}
+
+.tree {
+    width: 100px;
+    height: 200px;
+    position: relative;
+}
+
+.tree-trunk {
+    width: 20px;
+    height: 100%;
+    background-color: #8b4513;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tree-leaves {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    background-color: #4caf50;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+}
+
+.tree-label {
+    margin-top: 5px;
+    color: #4caf50;
+    font-weight: bold;
+    font-size: 14px;
+}

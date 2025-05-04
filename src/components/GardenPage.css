@@ -1,0 +1,26 @@
+.garden-page {
+    background: #f0f8ff;
+    padding: 20px;
+    text-align: center;
+}
+
+.garden-title {
+    font-size: 2.5rem;
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.garden-container {
+    margin-top: 50px;
+    position: relative;
+}
+
+.garden-message {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #4caf50;
+}
+
+.garden-message p {
+    font-weight: 500;
+}

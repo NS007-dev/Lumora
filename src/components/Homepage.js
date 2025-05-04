@@ -1,6 +1,6 @@
 import React from "react";
-import "./Homepage.css";
 import { Link } from "react-router-dom";
+import "./Homepage.css";
 
 const features = [
   {
@@ -44,6 +44,16 @@ export default function Homepage() {
           </div>
         ))}
       </section>
+
+      {/* Floating Button for Confidence Garden */}
+      <Link to="/garden" className="floating-btn">
+        🌳 Confidence Garden
+      </Link>
+
+      {/* Floating Emergency Button */}
+      <Link to="/emergency" className="floating-emergency-btn">
+        🚨 Emergency Mode
+      </Link>
     </div>
   );
 }

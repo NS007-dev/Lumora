@@ -1,0 +1,35 @@
+.emergency-alert {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #ff4e4e;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+}
+
+.emergency-message {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.emergency-btn {
+    background-color: #ffffff;
+    color: #ff4e4e;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.emergency-btn:hover {
+    background-color: #ffcccc;
+}

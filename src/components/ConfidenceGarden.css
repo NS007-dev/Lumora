@@ -1,0 +1,15 @@
+.garden-container {
+    background: radial-gradient(circle at 20% 30%, rgba(173, 216, 230, 0.6), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 192, 203, 0.5), transparent 40%),
+        #f3f3f3;
+    padding: 3rem;
+    text-align: center;
+}
+
+.tree {
+    width: 100px;
+    height: 200px;
+    background: linear-gradient(to bottom, #8c9e42, #556b2f);
+    border-radius: 20px;
+    margin-top: 2rem;
+}

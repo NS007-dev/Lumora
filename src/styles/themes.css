@@ -1,0 +1,40 @@
+/* Base (default) theme */
+:root {
+    --bg-color: #f7f7f7;
+    --card-bg: #ffffff;
+    --accent-color: #f8c8dc;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Happy mood */
+.theme-happy {
+    --bg-color: #fff8e7;
+    --card-bg: #fff3c4;
+    --accent-color: #ffcd85;
+    --text-color: #4b3f2f;
+}
+
+/* Calm mood */
+.theme-calm {
+    --bg-color: #e6f7f9;
+    --card-bg: #d2eff7;
+    --accent-color: #a8d9ff;
+    --text-color: #2f4f4f;
+}
+
+/* Energetic mood */
+.theme-energetic {
+    --bg-color: #fff0f6;
+    --card-bg: #ffd6e0;
+    --accent-color: #ff87a2;
+    --text-color: #5a0035;
+}
+
+/* Sad mood */
+.theme-sad {
+    --bg-color: #e3eaf3;
+    --card-bg: #cfd8e3;
+    --accent-color: #a0b8d9;
+    --text-color: #2a3f5f;
+}

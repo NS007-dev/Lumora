@@ -1,0 +1,55 @@
+.offline-emergency-mode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f9ff;
+    /* Light pastel blue */
+    font-family: 'Quicksand', sans-serif;
+    padding: 2rem;
+    text-align: center;
+}
+
+.offline-emergency-mode h1 {
+    color: #6c63ff;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.affirmation,
+.breathing-exercise,
+.journal {
+    margin-bottom: 2rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 500px;
+}
+
+.affirmation p,
+.journal p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.breathing-exercise button {
+    padding: 0.7rem 1.5rem;
+    background-color: #6c63ff;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.breathing-stage p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.breathing-exercise button:hover {
+    background-color: #5a52d9;
+}

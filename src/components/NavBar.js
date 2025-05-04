@@ -1,13 +1,15 @@
+// Navbar.js (or Navbar.jsx)
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 import "./NavBar.css";
+import ThemeToggle from "./ThemeToggle"; // Make sure this is imported
 
-function Navbar({ isDarkMode, toggleDarkMode }) {
+function Navbar({ isDarkMode, toggleDarkMode, theme, setTheme }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => setIsOpen(!isOpen);
-  const handleLinkClick = () => setIsOpen(false); // collapse on nav link click
+  const handleLinkClick = () => setIsOpen(false); // Collapse on nav link click
 
   return (
     <nav className={`navbar ${isDarkMode ? "dark" : ""}`}>
@@ -43,6 +45,9 @@ function Navbar({ isDarkMode, toggleDarkMode }) {
         <button className="theme-toggle-btn" onClick={toggleDarkMode}>
           {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
         </button>
+
+        {/* Theme Dropdown */}
+        <ThemeToggle theme={theme} setTheme={setTheme} />
 
         <div
           className={`hamburger ${isOpen ? "open" : ""}`}

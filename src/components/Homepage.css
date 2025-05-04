@@ -88,6 +88,33 @@ html {
     color: #333;
 }
 
+/* Floating Button for Confidence Garden */
+.floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 30px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.floating-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-5px);
+}
+
+.floating-btn:active {
+    transform: translateY(0);
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 12px;
@@ -109,4 +136,49 @@ html {
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--primary-purple) #f3f3f3;
+}
+
+/* Floating button styles for Confidence Garden */
+.floating-btn {
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    background-color: var(--primary-purple);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.floating-btn:hover {
+    background-color: var(--primary-blue);
+}
+
+/* Floating emergency button styles */
+.floating-emergency-btn {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    background-color: #ff5c5c;
+    /* Red color for emergency */
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.floating-emergency-btn:hover {
+    background-color: #ff4040;
 }
