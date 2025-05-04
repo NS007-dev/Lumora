@@ -1,12 +1,28 @@
-.positive-content-feed {
+/* Ensure body and html allow scrolling */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+/* Positive Content Feed Styles */
+.positive-content-feed-container {
     background-color: #fdf1f9;
     padding: 20px;
     margin-top: 80px;
     max-width: 700px;
     margin: auto;
     border-radius: 15px;
+    min-height: 100vh;
+    /* Ensure it occupies the full height */
+    overflow-y: auto;
+    /* Enable vertical scrolling if content exceeds viewport */
 }
 
+/* Title */
 .feed-title {
     font-size: 2rem;
     font-weight: bold;
@@ -15,6 +31,7 @@
     color: #ff60a7;
 }
 
+/* Individual Feed Card */
 .feed-card {
     background-color: #ffffff;
     border-radius: 20px;
@@ -28,6 +45,7 @@
     transform: scale(1.05);
 }
 
+/* Header within Feed Card */
 .feed-header {
     display: flex;
     align-items: center;
@@ -47,12 +65,14 @@
     margin-top: 8px;
 }
 
+/* Description */
 .description {
     margin-top: 10px;
     font-size: 1rem;
     color: #444;
 }
 
+/* Reactions */
 .reactions {
     margin-top: 15px;
     display: flex;
@@ -79,6 +99,7 @@
     font-size: 1.4rem;
 }
 
+/* Comments */
 .comments {
     margin-top: 12px;
 }
@@ -105,4 +126,11 @@
 
 .comment-preview .reaction-icon {
     font-size: 1.2rem;
+}
+
+/* Ensure Feed Card Scrolls Correctly */
+.feed-card {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    /* Ensure content within the card isn't hidden */
 }
