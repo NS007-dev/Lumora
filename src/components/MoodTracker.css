@@ -1,111 +1,84 @@
-/* General body background */
-body {
-    background-color: #f0f4f8;
-}
-
-/* Mood Tracker container */
-.mood-tracker-container {
-    padding: 2rem;
-    max-width: 700px;
-    margin: auto;
-    text-align: center;
-}
-
-/* Mood buttons */
-.mood-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin: 1rem 0;
-}
-
-.mood-buttons button {
-    border: 2px solid #6a4c9c;
-    /* Bluey purple border */
-    background-color: #7c5cc4;
-    /* Bluey purple background */
-    color: white;
-    border-radius: 10px;
-    padding: 0.75rem 1.2rem;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.mood-buttons button:hover,
-.mood-buttons button.selected {
-    border-color: #5a3c89;
-    /* Darker purple border */
-    background-color: #6a4c9c;
-    /* Darker purple background */
-    color: #f0f0f0;
-    /* Light text when selected */
-}
-
-/* Streak display */
-.streak-display {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #6a4c9c;
-    /* Bluey purple streak display */
-}
-
-/* Mood history list */
-.mood-history ul {
-    padding: 0;
-    list-style: none;
-    margin-top: 2rem;
-}
-
-.mood-history li {
-    background-color: #e8e7ff;
-    /* Light bluey purple background */
-    padding: 0.8rem;
-    margin: 0.5rem 0;
-    border-radius: 8px;
-    text-align: left;
-    color: #6a4c9c;
-    /* Bluey purple text color */
-}
-
-.mood-history li span {
-    text-transform: capitalize;
-}
-
-/* Save button */
-.save-btn {
-    margin: 1rem 0;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    background-color: #6a4c9c;
-    /* Bluey purple background */
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.save-btn:disabled {
-    background-color: #ccc;
-}
-
-/* Calendar */
 .react-calendar {
-    border: none;
-    font-family: 'Arial', sans-serif;
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid #e4e4f0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.react-calendar__navigation button {
+    background: none;
+    color: #6a4c9c;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    padding: 6px 10px;
+}
+
+.react-calendar__navigation button:hover {
+    background: #f2efff;
 }
 
 .react-calendar__tile {
-    background-color: #e8e7ff;
-    /* Light bluey purple background for each day */
-    border-radius: 8px;
-    color: #6a4c9c;
-    /* Bluey purple text */
+    border-radius: 10px;
+    padding: 0.8rem 0;
+    position: relative;
+    transition: background 0.2s ease;
+    text-align: center;
+    cursor: pointer;
+    background: none;
+    color: #444;
 }
 
 .react-calendar__tile:hover {
-    background-color: #7c5cc4;
-    /* Hover effect - bluey purple */
-    color: #f0f0f0;
+    background: #f8f6ff;
+}
+
+/* Mood indicator dot */
+.mood-indicator {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* Mood colors for dot + today’s tile background */
+.today-tile.happy {
+    background: #fff6cc !important;
+    color: #5c4b00;
+}
+
+.today-tile.neutral {
+    background: #f0f0f0 !important;
+    color: #555;
+}
+
+.today-tile.sad {
+    background: #d4eafd !important;
+    color: #1b4b6e;
+}
+
+.today-tile.angry {
+    background: #ffe0e0 !important;
+    color: #7a1a1a;
+}
+
+.today-tile.stressed {
+    background: #ffe8d6 !important;
+    color: #814a00;
+}
+
+/* Normal today style removed to avoid clashing */
+.react-calendar__tile--now {
+    background: none !important;
+    border: none !important;
+    color: inherit;
 }
