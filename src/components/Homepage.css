@@ -88,33 +88,6 @@ html {
     color: #333;
 }
 
-/* Floating Button for Confidence Garden */
-.floating-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 15px 30px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.floating-btn:hover {
-    background-color: #45a049;
-    transform: translateY(-5px);
-}
-
-.floating-btn:active {
-    transform: translateY(0);
-}
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 12px;
@@ -138,47 +111,43 @@ html {
     scrollbar-color: var(--primary-purple) #f3f3f3;
 }
 
-/* Floating button styles for Confidence Garden */
-.floating-btn {
+/* Floating Buttons Container */
+.floating-buttons {
     position: fixed;
-    bottom: 10%;
-    right: 5%;
-    background-color: var(--primary-purple);
-    color: #fff;
-    padding: 1rem 1.5rem;
-    border-radius: 50px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    font-size: 1.2rem;
-    text-decoration: none;
+    bottom: 20px;
+    right: 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 1000;
+}
+
+/* Base Style for Floating Buttons */
+.floating-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .floating-btn:hover {
-    background-color: var(--primary-blue);
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Floating emergency button styles */
-.floating-emergency-btn {
-    position: fixed;
-    bottom: 5%;
-    right: 5%;
-    background-color: #ff5c5c;
-    /* Red color for emergency */
-    color: #fff;
-    padding: 1rem 1.5rem;
-    border-radius: 50px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    font-size: 1.2rem;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
+/* Specific Colors */
+.confidence-tree-btn {
+    background-color: #4CAF50;
+    /* Green */
 }
 
-.floating-emergency-btn:hover {
-    background-color: #ff4040;
+.emergency-btn {
+    background-color: #e63946;
+    /* Red */
 }
