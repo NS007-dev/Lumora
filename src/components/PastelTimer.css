@@ -1,0 +1,57 @@
+.pastel-timer {
+    text-align: center;
+    padding: 2rem;
+    font-family: "Quicksand", sans-serif;
+    background: var(--card-color, #fef6ff);
+    border-radius: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 2rem auto;
+}
+
+.input-time input {
+    width: 60px;
+    padding: 0.5rem;
+    border: 2px solid #dab0ff;
+    border-radius: 8px;
+    background: #fff3fd;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.input-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.time-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #9966cc;
+    margin: 1rem 0;
+}
+
+.timer-buttons button {
+    background-color: #eac8ff;
+    color: #5d3370;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.timer-buttons button:hover {
+    background-color: #d9aaff;
+}
+
+.timer-description {
+    font-size: 1rem;
+    color: #7e5a9b;
+    margin: 0.5rem 0 1.5rem;
+    line-height: 1.5;
+}

@@ -1,0 +1,63 @@
+/* SelfCareRecipe.css */
+.selfcare-notebook {
+    background: #fffdf8;
+    border: 2px solid #ffe0e5;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: "Quicksand", sans-serif;
+    background-image: linear-gradient(to bottom, #fff 2.5rem, transparent 2.5rem),
+        repeating-linear-gradient(#f5e9ec, #f5e9ec 2px, transparent 2px, transparent 2.6rem);
+    background-size: 100% 2.6rem;
+    position: relative;
+}
+
+.selfcare-notebook h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+    color: #ff7a99;
+}
+
+.subtitle {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: #a58c8a;
+}
+
+.recipe-btn {
+    padding: 0.7rem 1.2rem;
+    background-color: #ffdce4;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #5c3b4d;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+}
+
+.recipe-btn:hover {
+    background-color: #ffc6d1;
+}
+
+.recipe-list {
+    margin-top: 2rem;
+    background: #fff7fa;
+    border-left: 4px solid #ffb3c1;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.recipe-list h2 {
+    margin-bottom: 0.8rem;
+    color: #d36482;
+}
+
+.recipe-item {
+    font-size: 1.1rem;
+    padding: 0.3rem 0;
+    list-style: "💗 ";
+    margin-left: 1.2rem;
+}

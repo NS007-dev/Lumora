@@ -1,4 +1,3 @@
-// Navbar.js (or Navbar.jsx)
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
@@ -35,6 +34,12 @@ function Navbar({ isDarkMode, toggleDarkMode, theme, setTheme }) {
         </Link>
         <Link to="/positive-feed" onClick={handleLinkClick}>
           Positive Feed
+        </Link>
+        <Link to="/self-care-recipe" onClick={handleLinkClick}>
+          Self-Care Recipe
+        </Link>
+        <Link to="/timer" onClick={handleLinkClick}>
+          Timer
         </Link>
         <Link to="/profile" onClick={handleLinkClick}>
           Profile

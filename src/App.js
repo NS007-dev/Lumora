@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Pages
 import HomePage from "./components/Homepage";
 import Affirmation from "./components/Affirmations";
 import Journal from "./components/Journal";
@@ -7,24 +9,23 @@ import MoodTracker from "./components/MoodTracker";
 import ScreenTimeChallenge from "./components/ScreenTimeChallenge";
 import PositiveContentFeed from "./components/PositiveContentFeed";
 import UserProfile from "./components/UserProfile";
-import Layout from "./components/Layout";
 import AddAffirmation from "./components/AddAffirmation";
 import ConfidenceGarden from "./components/ConfidenceGarden";
-import OfflineEmergencyMode from "./components/OfflineEmergencyMode"; // EmergencyMode component
-import BoostWheel from "./components/BoostWheel"; // New BoostWheel component
+import OfflineEmergencyMode from "./components/OfflineEmergencyMode";
+import BoostWheel from "./components/BoostWheel";
+import SelfCareRecipe from "./components/SelfCareRecipe";
+import PastelTimer from "./components/PastelTimer";
 
-// 🪄 Import ThemeProvider and theme styles
+// Layout & Theme
+import Layout from "./components/Layout";
 import { ThemeProvider } from "./context/ThemeContext";
-import "./styles/themes.css"; // Mood-based themes
+import "./styles/themes.css";
 import "./App.css";
 
 function App() {
   // Dark mode state
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
-  };
+  const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
 
   // Mood-based theme state
   const [theme, setTheme] = useState("default");
@@ -61,8 +62,7 @@ function App() {
         >
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/boost" element={<BoostWheel />} />{" "}
-            {/* Added BoostWheel route */}
+            <Route path="/boost" element={<BoostWheel />} />
             <Route path="/affirmations" element={<Affirmation />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/moodtracker" element={<MoodTracker />} />
@@ -71,8 +71,9 @@ function App() {
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/add-affirmation" element={<AddAffirmation />} />
             <Route path="/garden" element={<ConfidenceGarden />} />
-            <Route path="/emergency" element={<OfflineEmergencyMode />} />{" "}
-            {/* Emergency Mode route */}
+            <Route path="/emergency" element={<OfflineEmergencyMode />} />
+            <Route path="/self-care-recipe" element={<SelfCareRecipe />} />
+            <Route path="/timer" element={<PastelTimer />} />
           </Routes>
         </Layout>
       </Router>
