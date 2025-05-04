@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MoodCalendar.css";
 
 const moodStyles = {
@@ -10,6 +10,7 @@ const moodStyles = {
 };
 
 const MoodCalendar = () => {
+  const [selectedDay, setSelectedDay] = useState(null);
   const moodLogs = JSON.parse(localStorage.getItem("moodLogs")) || [];
 
   const today = new Date();
@@ -22,11 +23,22 @@ const MoodCalendar = () => {
     return moodLogs.find((entry) => entry.date === dateStr);
   };
 
+  const handleDayClick = (day) => {
+    const moodEntry = getMoodForDay(day);
+    if (moodEntry) {
+      setSelectedDay({
+        date: new Date(year, month, day).toDateString(),
+        mood: moodEntry.mood,
+      });
+    }
+  };
+
   return (
     <div className="modern-calendar">
       <div className="calendar-header">
         {today.toLocaleString("default", { month: "long" })} {year}
       </div>
+
       <div className="calendar-grid">
         {Array.from({ length: daysInMonth }, (_, i) => {
           const day = i + 1;
@@ -42,10 +54,12 @@ const MoodCalendar = () => {
               key={day}
               className={`calendar-day ${isToday ? "today" : ""}`}
               title={mood ? `${moodData.emoji} ${mood}` : ""}
+              onClick={() => handleDayClick(day)}
               style={{
                 backgroundColor: mood ? moodData.color : "#f0f0fa",
                 color: mood ? "#fff" : "#6a4c9c",
                 border: isToday ? "2px solid #000" : "none",
+                cursor: mood ? "pointer" : "default",
               }}
             >
               <div className="day-number">
@@ -58,6 +72,23 @@ const MoodCalendar = () => {
           );
         })}
       </div>
+
+      {/* Mood Detail Modal */}
+      {selectedDay && (
+        <div className="mood-modal">
+          <div className="mood-modal-content">
+            <h3>Mood Details</h3>
+            <p>
+              <strong>Date:</strong> {selectedDay.date}
+            </p>
+            <p>
+              <strong>Mood:</strong> {moodStyles[selectedDay.mood].emoji}{" "}
+              {selectedDay.mood}
+            </p>
+            <button onClick={() => setSelectedDay(null)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

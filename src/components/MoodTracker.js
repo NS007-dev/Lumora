@@ -1,6 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import "./MoodTracker.css";
 import MoodCalendar from "./MoodCalendar"; // New calendar component
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const moods = [
   { label: "😊 Happy", value: "happy", color: "#ffcc00" },
@@ -14,6 +35,8 @@ const MoodTracker = () => {
   const [moodLogs, setMoodLogs] = useState([]);
   const [currentStreak, setCurrentStreak] = useState(0);
   const [lastLoggedDate, setLastLoggedDate] = useState(null);
+  const [selectedMood, setSelectedMood] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null); // Store the selected date for logging mood
 
   useEffect(() => {
     const storedLogs = JSON.parse(localStorage.getItem("moodLogs")) || [];
@@ -34,13 +57,26 @@ const MoodTracker = () => {
   }, [moodLogs, currentStreak, lastLoggedDate]);
 
   const handleMoodClick = (mood) => {
-    const today = new Date().toISOString().split("T")[0];
-    if (lastLoggedDate === today) {
+    setSelectedMood(mood); // Store the selected mood
+  };
+
+  const handleCalendarDateSelect = (date) => {
+    setSelectedDate(date);
+  };
+
+  const handleLogMood = () => {
+    if (!selectedMood) {
+      alert("Please select a mood first!");
+      return;
+    }
+
+    const selectedDateStr = selectedDate.toISOString().split("T")[0];
+    if (lastLoggedDate === selectedDateStr) {
       alert("You've already logged your mood today!");
       return;
     }
 
-    const newEntry = { date: today, mood: mood.value };
+    const newEntry = { date: selectedDateStr, mood: selectedMood.value };
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     const yesterdayStr = yesterday.toISOString().split("T")[0];
@@ -48,7 +84,30 @@ const MoodTracker = () => {
 
     setMoodLogs((prev) => [...prev, newEntry]);
     setCurrentStreak((prev) => (isConsecutive ? prev + 1 : 1));
-    setLastLoggedDate(today);
+    setLastLoggedDate(selectedDateStr);
+    localStorage.setItem("lastLoggedDate", selectedDateStr);
+  };
+
+  // Mood Chart Data
+  const moodData = moodLogs.map((log) => ({
+    date: log.date,
+    mood: log.mood,
+  }));
+
+  const moodChartData = {
+    labels: moodData.map((data) => data.date),
+    datasets: [
+      {
+        label: "Mood Trend",
+        data: moodData.map((data) =>
+          data.mood === "happy" ? 1 : data.mood === "neutral" ? 0 : -1
+        ),
+        fill: false,
+        backgroundColor: "#4caf50",
+        borderColor: "#4caf50",
+        borderWidth: 2,
+      },
+    ],
   };
 
   return (
@@ -67,6 +126,13 @@ const MoodTracker = () => {
         ))}
       </div>
 
+      {selectedMood && (
+        <div>
+          <p>You have selected: {selectedMood.label}</p>
+          <button onClick={handleLogMood}>Log Mood for Selected Date</button>
+        </div>
+      )}
+
       <div className="progress-bar-container">
         <strong>Current Streak: {currentStreak} Days</strong>
         <div className="progress-bar">
@@ -77,8 +143,16 @@ const MoodTracker = () => {
         </div>
       </div>
 
-      {/* Modern Calendar */}
-      <MoodCalendar />
+      {/* Mood Chart */}
+      <div className="mood-chart-container">
+        <Line data={moodChartData} />
+      </div>
+
+      {/* Calendar */}
+      <MoodCalendar
+        onDateSelect={handleCalendarDateSelect}
+        moodLogs={moodLogs}
+      />
 
       <div className="streak-display">
         🔥 <strong>{currentStreak}</strong> Day Streak
