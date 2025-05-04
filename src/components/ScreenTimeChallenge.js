@@ -1,3 +1,4 @@
+// src/components/ScreenTimeChallenge.js
 import React, { useState, useEffect } from "react";
 import "./ScreenTimeChallenge.css";
 
@@ -38,12 +39,12 @@ const ScreenTimeChallenge = () => {
   ).length;
 
   return (
-    <div className="screen-time-container">
-      <h1>📵 Screen Time Challenge</h1>
+    <div className="screen-time-container pastel-box">
+      <h1 className="pastel-heading">📵 Screen Time Glow-Up</h1>
       <form onSubmit={handleSubmit} className="screen-time-form">
         <input
           type="number"
-          placeholder="Hours spent on screen today"
+          placeholder="📱 Hours on screen today"
           value={inputTime}
           onChange={(e) => setInputTime(e.target.value)}
           min="0"
@@ -51,28 +52,33 @@ const ScreenTimeChallenge = () => {
         />
         <input
           type="number"
-          placeholder="Daily screen time goal (hours)"
+          placeholder="🎯 Goal screen time (hrs)"
           value={goalTime}
           onChange={(e) => setGoalTime(e.target.value)}
           min="0"
           step="0.1"
         />
-        <button type="submit">Add Entry</button>
+        <button type="submit" className="pastel-btn">
+          ✨ Add Entry
+        </button>
       </form>
 
       <div className="log-summary">
-        <h3>
-          ✅ Goal Achieved: {successCount} day
-          {successCount !== 1 ? "s" : ""}
+        <h3 className="goal-summary">
+          🌟 Goals Crushed: <span className="goal-count">{successCount}</span>{" "}
+          day
+          {successCount !== 1 ? "s" : ""}!
         </h3>
         <ul className="log-list">
           {screenTimeLogs.map((log) => (
             <li
               key={log.id}
-              className={log.timeSpent <= log.goal ? "success" : "fail"}
+              className={`log-item ${
+                log.timeSpent <= log.goal ? "success" : "fail"
+              }`}
             >
-              <strong>{log.date}</strong> — You spent {log.timeSpent}h (Goal:{" "}
-              {log.goal}h)
+              <strong>{log.date}</strong> — Spent{" "}
+              <strong>{log.timeSpent}h</strong> (Goal: {log.goal}h)
             </li>
           ))}
         </ul>

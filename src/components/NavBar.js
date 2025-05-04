@@ -1,50 +1,16 @@
-// src/components/Navbar.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
-import "../styles/Navbar.css";
+import "./NavBar.css";
 
-const pastelThemes = {
-  pink: {
-    light: "pastel-pink",
-    dark: "pastel-pink-dark",
-  },
-  blue: {
-    light: "pastel-blue",
-    dark: "pastel-blue-dark",
-  },
-  purple: {
-    light: "pastel-purple",
-    dark: "pastel-purple-dark",
-  },
-};
-
-function Navbar() {
+function Navbar({ isDarkMode, toggleDarkMode }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [themeColor, setThemeColor] = useState(
-    localStorage.getItem("themeColor") || "pink"
-  );
-  const [mode, setMode] = useState(localStorage.getItem("mode") || "light");
-
-  useEffect(() => {
-    document.body.className = `${pastelThemes[themeColor][mode]}`;
-    localStorage.setItem("themeColor", themeColor);
-    localStorage.setItem("mode", mode);
-  }, [themeColor, mode]);
-
-  const handleThemeChange = (e) => {
-    setThemeColor(e.target.value);
-  };
-
-  const toggleDarkMode = () => {
-    setMode((prev) => (prev === "light" ? "dark" : "light"));
-  };
 
   const handleToggle = () => setIsOpen(!isOpen);
-  const handleLinkClick = () => setIsOpen(false);
+  const handleLinkClick = () => setIsOpen(false); // collapse on nav link click
 
   return (
-    <nav className={`navbar ${mode === "dark" ? "dark" : ""}`}>
+    <nav className={`navbar ${isDarkMode ? "dark" : ""}`}>
       <div className="navbar-left">
         <span className="logo">🌙 Lumora</span>
       </div>
@@ -74,18 +40,8 @@ function Navbar() {
       </div>
 
       <div className="navbar-right">
-        <select
-          value={themeColor}
-          onChange={handleThemeChange}
-          className="theme-dropdown-select"
-        >
-          <option value="pink">💗 Pink</option>
-          <option value="blue">💙 Blue</option>
-          <option value="purple">💜 Purple</option>
-        </select>
-
         <button className="theme-toggle-btn" onClick={toggleDarkMode}>
-          {mode === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+          {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
         </button>
 
         <div

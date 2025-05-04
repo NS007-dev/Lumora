@@ -1,42 +1,98 @@
-.screen-time-challenge {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
+/* ScreenTimeChallenge.css */
+.screen-time-container {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 30px;
+    background: var(--container-bg, #fff0f5);
+    /* light pastel pink */
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+    color: var(--text-color, #333);
     text-align: center;
 }
 
-.set-challenge,
-.log-time {
-    margin: 20px 0;
+.screen-time-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ff69b4;
 }
 
-input[type="number"],
-input[type="text"] {
-    padding: 10px;
-    margin: 5px;
-    width: 200px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #32cd32;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #228b22;
-}
-
-.progress {
-    margin-top: 20px;
-    background-color: #f0f8ff;
-    padding: 10px;
+.screen-time-form input[type="number"] {
+    padding: 12px 15px;
+    margin: 10px;
+    width: 260px;
     border-radius: 10px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-size: 1rem;
+    transition: 0.3s;
 }
 
-.screen-time-log ul {
+.screen-time-form input::placeholder {
+    color: #b68fc3;
+}
+
+.screen-time-form input:focus {
+    border-color: #ffb6c1;
+    outline: none;
+    box-shadow: 0 0 5px #ffb6c1;
+}
+
+.screen-time-form button {
+    background: #ffb6c1;
+    color: white;
+    padding: 12px 25px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.screen-time-form button:hover {
+    background: #ff69b4;
+    transform: scale(1.05);
+}
+
+.log-summary {
+    margin-top: 30px;
+}
+
+.log-summary h3 {
+    color: #6a5acd;
+    font-weight: 600;
+}
+
+.log-list {
+    margin-top: 20px;
     list-style-type: none;
     padding: 0;
+}
+
+.log-list li {
+    padding: 12px 20px;
+    margin: 10px 0;
+    border-radius: 12px;
+    background-color: #fce4ec;
+    color: #333;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.log-list li.success {
+    border-left: 5px solid #90ee90;
+    background: #e0ffe0;
+}
+
+.log-list li.fail {
+    border-left: 5px solid #ff6b6b;
+    background: #ffe0e0;
+}
+
+@media (max-width: 768px) {
+    .screen-time-form input[type="number"] {
+        width: 100%;
+    }
 }

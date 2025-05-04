@@ -1,7 +1,7 @@
-// src/components/PositiveContentFeed.js
 import React, { useState, useEffect } from "react";
 import "./PositiveContentFeed.css";
 import profilePlaceholder from "../assets/placeholder.jpg";
+import { FaHeart, FaComment, FaShare, FaRegSmileBeam } from "react-icons/fa";
 
 const contentFeed = [
   {
@@ -10,6 +10,7 @@ const contentFeed = [
     source: "YouTube - Psych2Go",
     link: "https://www.youtube.com/watch?v=somevideo",
     profilePic: profilePlaceholder,
+    description: "This video will change the way you see yourself!",
   },
   {
     id: "post-2",
@@ -17,6 +18,7 @@ const contentFeed = [
     source: "Medium",
     link: "https://medium.com/@example/affirmations",
     profilePic: profilePlaceholder,
+    description: "Start your day with positivity! 🌞",
   },
   {
     id: "post-3",
@@ -24,6 +26,7 @@ const contentFeed = [
     source: "TED",
     link: "https://www.ted.com/talks/brene_brown_the_power_of_vulnerability",
     profilePic: profilePlaceholder,
+    description: "Be vulnerable, be strong. 💪",
   },
 ];
 
@@ -62,7 +65,7 @@ const PositiveContentFeed = () => {
 
   return (
     <div className="positive-content-feed">
-      <h2>Positive Content Feed</h2>
+      <h2 className="feed-title">Positive Content Feed</h2>
       {contentFeed.map((item) => (
         <div className="feed-card" key={item.id}>
           <div className="feed-header">
@@ -72,9 +75,18 @@ const PositiveContentFeed = () => {
             </a>
           </div>
           <p className="source">{item.source}</p>
+          <p className="description">{item.description}</p>
           <div className="reactions">
             <button onClick={() => handleLike(item.id)}>
-              ❤️ {likes[item.id] || 0}
+              <FaHeart className="reaction-icon" />{" "}
+              <span>{likes[item.id] || 0}</span>
+            </button>
+            <button>
+              <FaComment className="reaction-icon" />{" "}
+              <span>{comments[item.id] ? "Commented" : "Comment"}</span>
+            </button>
+            <button>
+              <FaShare className="reaction-icon" /> Share
             </button>
           </div>
           <div className="comments">
@@ -85,7 +97,9 @@ const PositiveContentFeed = () => {
               onChange={(e) => handleCommentChange(item.id, e.target.value)}
             />
             {comments[item.id] && (
-              <p className="comment-preview">💬 {comments[item.id]}</p>
+              <p className="comment-preview">
+                <FaRegSmileBeam className="reaction-icon" /> {comments[item.id]}
+              </p>
             )}
           </div>
         </div>
