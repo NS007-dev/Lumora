@@ -10,7 +10,8 @@ import UserProfile from "./components/UserProfile";
 import Layout from "./components/Layout";
 import AddAffirmation from "./components/AddAffirmation";
 import ConfidenceGarden from "./components/ConfidenceGarden";
-import OfflineEmergencyMode from "./components/OfflineEmergencyMode"; // Add the EmergencyMode component
+import OfflineEmergencyMode from "./components/OfflineEmergencyMode"; // EmergencyMode component
+import BoostWheel from "./components/BoostWheel"; // New BoostWheel component
 
 // 🪄 Import ThemeProvider and theme styles
 import { ThemeProvider } from "./context/ThemeContext";
@@ -60,6 +61,8 @@ function App() {
         >
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/boost" element={<BoostWheel />} />{" "}
+            {/* Added BoostWheel route */}
             <Route path="/affirmations" element={<Affirmation />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/moodtracker" element={<MoodTracker />} />
@@ -69,7 +72,7 @@ function App() {
             <Route path="/add-affirmation" element={<AddAffirmation />} />
             <Route path="/garden" element={<ConfidenceGarden />} />
             <Route path="/emergency" element={<OfflineEmergencyMode />} />{" "}
-            {/* Add Emergency Mode route */}
+            {/* Emergency Mode route */}
           </Routes>
         </Layout>
       </Router>

@@ -60,6 +60,11 @@ export default function Homepage() {
             ⚡
           </button>
         </Link>
+        <Link to="/boost">
+          <button className="floating-btn boost-btn" title="Confidence Boost">
+            🎡
+          </button>
+        </Link>
       </div>
     </div>
   );
