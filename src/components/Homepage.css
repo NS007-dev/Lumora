@@ -1,10 +1,30 @@
-/* homepage.css */
-body,
-html {
+/* Custom Font & Variables */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    --primary-pink: #f8c8dc;
+    --primary-blue: #cde8f9;
+    --primary-purple: #d6c4f8;
+    --white: #fff;
+    --gray: #f7f7f7;
+    --text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --border-radius: 16px;
+}
+
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Body and Container Setup */
+body,
+html {
+    height: 100%;
+    overflow-y: auto;
 }
 
 .homepage-container {
@@ -17,6 +37,7 @@ html {
     overflow-x: hidden;
 }
 
+/* Hero Section */
 .hero {
     text-align: left;
     margin-bottom: 2rem;
@@ -25,14 +46,17 @@ html {
 .hero h1 {
     font-size: 2.5rem;
     color: #3c3c8c;
+    font-weight: bold;
 }
 
 .hero p {
     font-size: 1.2rem;
     color: #444;
     max-width: 600px;
+    line-height: 1.6;
 }
 
+/* Feature Cards Section */
 .features-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -41,7 +65,7 @@ html {
 
 .feature-card {
     background: rgba(255, 255, 255, 0.7);
-    border-radius: 16px;
+    border-radius: var(--border-radius);
     padding: 1.5rem;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
@@ -62,4 +86,27 @@ html {
 .feature-card p {
     font-size: 1rem;
     color: #333;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f3f3f3;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, var(--primary-pink), var(--primary-purple));
+    border-radius: 10px;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Firefox Scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-purple) #f3f3f3;
 }
