@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "../styles/ParticleBackground.css"; // Ensure this file exists for styling
+import "../styles/ParticleBackground.css";
 
 const ParticlesBackground = () => {
   useEffect(() => {
@@ -7,13 +7,12 @@ const ParticlesBackground = () => {
     document.body.appendChild(canvas);
     const ctx = canvas.getContext("2d");
 
-    // Function to set canvas dimensions
     const setCanvasSize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
-    setCanvasSize(); // Ensure full coverage on load
+    setCanvasSize();
 
     let particles = [];
     const numParticles = 100;
@@ -31,13 +30,12 @@ const ParticlesBackground = () => {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        // Keep particles within bounds
         if (this.x <= 0 || this.x >= canvas.width) this.speedX *= -1;
         if (this.y <= 0 || this.y >= canvas.height) this.speedY *= -1;
       }
 
       draw() {
-        ctx.fillStyle = "rgba(173, 216, 230, 0.7)"; // Light blue color
+        ctx.fillStyle = "rgba(173, 216, 230, 0.7)";
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.closePath();
@@ -46,7 +44,7 @@ const ParticlesBackground = () => {
     }
 
     function initParticles() {
-      particles = []; // Reset particles when resizing
+      particles = [];
       for (let i = 0; i < numParticles; i++) {
         particles.push(new Particle());
       }
@@ -64,22 +62,20 @@ const ParticlesBackground = () => {
     initParticles();
     animateParticles();
 
-    // Handle screen resizing
     const handleResize = () => {
       setCanvasSize();
-      initParticles(); // Reinitialize particles on resize
+      initParticles();
     };
 
     window.addEventListener("resize", handleResize);
 
-    // Cleanup function to remove the canvas when the component unmounts
     return () => {
       window.removeEventListener("resize", handleResize);
       document.body.removeChild(canvas);
     };
   }, []);
 
-  return null; // This component only renders the canvas in the background
+  return null;
 };
 
 export default ParticlesBackground;

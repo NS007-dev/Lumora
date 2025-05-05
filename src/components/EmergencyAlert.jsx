@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./EmergencyAlert.css"; // Make sure you have this CSS file
+import "./EmergencyAlert.css";
 
 const EmergencyAlert = () => {
   const [isVisible, setIsVisible] = useState(true);
   const navigate = useNavigate();
 
   const handleEmergencyClick = () => {
-    setIsVisible(false); // Hide the alert bubble
-    navigate("/offline-emergency"); // Navigate to the emergency mode page
+    setIsVisible(false);
+    navigate("/offline-emergency");
   };
 
-  if (!isVisible) return null; // Hide the bubble if it's not visible
+  if (!isVisible) return null;
 
   return (
     <div className="emergency-alert">

@@ -1,10 +1,8 @@
-/* ScreenTimeChallenge.css */
 .screen-time-container {
     max-width: 700px;
     margin: 30px auto;
     padding: 30px;
     background: var(--container-bg, #fff0f5);
-    /* light pastel pink */
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     font-family: "Poppins", sans-serif;

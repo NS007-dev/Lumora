@@ -24,7 +24,7 @@ const journalPrompts = [
 const OfflineEmergencyMode = () => {
   const [currentAffirmation, setCurrentAffirmation] = useState("");
   const [isBreathing, setIsBreathing] = useState(false);
-  const [breathingStage, setBreathingStage] = useState(0); // 0: inhale, 1: hold, 2: exhale
+  const [breathingStage, setBreathingStage] = useState(0);
   const [journalPrompt, setJournalPrompt] = useState("");
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const OfflineEmergencyMode = () => {
     setTimeout(() => {
       clearInterval(breathingCycle);
       setIsBreathing(false);
-    }, 12000); // 12 seconds for a full cycle
+    }, 12000);
   };
 
   return (

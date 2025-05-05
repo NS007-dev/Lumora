@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "./ConfidenceTree.css"; // Create the CSS file for styling
+import "./ConfidenceTree.css";
 
 const ConfidenceTree = ({ progress }) => {
   const [treeGrowth, setTreeGrowth] = useState(0);
 
   useEffect(() => {
-    // Update tree growth based on user progress
     setTreeGrowth(progress);
   }, [progress]);
 

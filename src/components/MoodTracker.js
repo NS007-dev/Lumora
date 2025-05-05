@@ -11,7 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import "./MoodTracker.css";
-import MoodCalendar from "./MoodCalendar"; // New calendar component
+import MoodCalendar from "./MoodCalendar";
 
 ChartJS.register(
   CategoryScale,
@@ -88,7 +88,6 @@ const MoodTracker = () => {
     localStorage.setItem("lastLoggedDate", selectedDateStr);
   };
 
-  // Mood Chart Data
   const moodData = moodLogs.map((log) => ({
     date: log.date,
     mood: log.mood,

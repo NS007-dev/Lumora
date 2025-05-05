@@ -1,4 +1,3 @@
-// src/components/ScreenTimeChallenge.js
 import React, { useState, useEffect } from "react";
 import "./ScreenTimeChallenge.css";
 

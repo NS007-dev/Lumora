@@ -15,19 +15,15 @@ import OfflineEmergencyMode from "./components/OfflineEmergencyMode";
 import BoostWheel from "./components/BoostWheel";
 import SelfCareRecipe from "./components/SelfCareRecipe";
 import PastelTimer from "./components/PastelTimer";
-
-// Layout & Theme
 import Layout from "./components/Layout";
 import { ThemeProvider } from "./context/ThemeContext";
 import "./styles/themes.css";
 import "./App.css";
 
 function App() {
-  // Dark mode state
   const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleDarkMode = () => setIsDarkMode((prev) => !prev);
 
-  // Mood-based theme state
   const [theme, setTheme] = useState("default");
 
   useEffect(() => {
@@ -40,7 +36,6 @@ function App() {
     localStorage.setItem("moodTheme", theme);
   }, [theme]);
 
-  // Dark mode effects
   useEffect(() => {
     const savedDarkMode = localStorage.getItem("darkMode") === "true";
     setIsDarkMode(savedDarkMode);

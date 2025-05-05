@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Moon, Sun } from "lucide-react";
 import "./NavBar.css";
-import ThemeToggle from "./ThemeToggle"; // Make sure this is imported
+import ThemeToggle from "./ThemeToggle";
 
 function Navbar({ isDarkMode, toggleDarkMode, theme, setTheme }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => setIsOpen(!isOpen);
-  const handleLinkClick = () => setIsOpen(false); // Collapse on nav link click
+  const handleLinkClick = () => setIsOpen(false);
 
   return (
     <nav className={`navbar ${isDarkMode ? "dark" : ""}`}>

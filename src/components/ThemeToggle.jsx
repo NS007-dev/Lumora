@@ -1,4 +1,3 @@
-// ThemeToggle.jsx ✅ Keep this one!
 import React from "react";
 import "./ThemeToggle.css";
 

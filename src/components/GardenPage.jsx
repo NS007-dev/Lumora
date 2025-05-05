@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ConfidenceTree from "./ConfidenceTree";
-import "./GardenPage.css"; // Add custom styles for the garden page
+import "./GardenPage.css"; 
 
 const GardenPage = () => {
-  // Simulate user progress (in a real app, you can pull this from a user profile or state)
   const [userProgress, setUserProgress] = useState(50);
 
   return (

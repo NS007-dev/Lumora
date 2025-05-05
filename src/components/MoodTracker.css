@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f7f7f7;
@@ -6,12 +5,9 @@ body {
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
-    /* Prevent horizontal scroll */
     min-height: 100vh;
-    /* Ensure body takes at least the full screen height */
 }
 
-/* Mood Tracker Container */
 .mood-tracker-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -20,16 +16,13 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
-    /* Allow scrolling if content overflows */
     height: auto;
     min-height: 100vh;
-    /* Ensure the container is at least the full height of the viewport */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
-/* Header */
 h2 {
     text-align: center;
     color: #4a4a4a;
@@ -37,7 +30,6 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Mood Buttons */
 .mood-buttons {
     display: flex;
     justify-content: center;
@@ -60,7 +52,6 @@ h2 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Progress Bar */
 .progress-bar-container {
     text-align: center;
     margin-top: 20px;
@@ -81,14 +72,12 @@ h2 {
     border-radius: 10px;
 }
 
-/* Mood Chart */
 .mood-chart-container {
     margin: 20px 0;
     height: 300px;
     overflow: visible;
 }
 
-/* Calendar */
 .mood-calendar {
     margin: 20px auto;
     display: block;
@@ -110,7 +99,6 @@ h2 {
     cursor: pointer;
 }
 
-/* Streak & History */
 .streak-display {
     font-size: 1.5rem;
     text-align: center;
@@ -138,7 +126,6 @@ h2 {
     font-weight: bold;
 }
 
-/* Responsive Styles */
 @media screen and (max-width: 768px) {
     .mood-buttons {
         flex-wrap: wrap;

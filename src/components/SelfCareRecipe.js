@@ -1,4 +1,3 @@
-// components/SelfCareRecipe.js
 import React, { useState } from "react";
 import "./SelfCareRecipe.css";
 

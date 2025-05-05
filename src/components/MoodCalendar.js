@@ -73,7 +73,6 @@ const MoodCalendar = () => {
         })}
       </div>
 
-      {/* Mood Detail Modal */}
       {selectedDay && (
         <div className="mood-modal">
           <div className="mood-modal-content">
