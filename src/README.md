@@ -38,13 +38,6 @@ In today's world of academic pressure, social comparison, and online noise, Lumo
 
 ---
 
-## 📸 Screenshots
-
-*(You can add screenshots here)*  
-Paste images of your homepage, affirmation screen, mood tracker, etc.
-
----
-
 ## 🧠 Inspiration
 
 This app was made to empower teenage girls aged 13–18 to:
